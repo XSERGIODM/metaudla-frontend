@@ -1,0 +1,216 @@
+/* About Page Custom Styles */
+
+/* Hero Section Enhancements */
+.hero-gradient {
+  position: relative;
+  background: linear-gradient(135deg,
+    hsl(var(--bg-gradient-start)) 0%,
+    hsl(var(--bg-gradient-end)) 50%,
+    hsl(var(--metaverse-crystal) / 0.1) 100%);
+}
+
+.hero-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(circle at 20% 80%, hsl(var(--primary-light) / 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, hsl(var(--metaverse-crystal) / 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Roadmap Timeline Styles */
+.roadmap-phase {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.roadmap-phase::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 60px;
+  bottom: -24px;
+  width: 2px;
+  background: hsl(var(--glass-border));
+  opacity: 0.5;
+}
+
+.roadmap-phase:last-child::before {
+  display: none;
+}
+
+.roadmap-phase.completed {
+  border-left: 4px solid hsl(var(--primary));
+}
+
+.roadmap-phase.in-progress {
+  border-left: 4px solid #3b82f6;
+}
+
+.roadmap-phase.planned {
+  border-left: 4px solid #8b5cf6;
+}
+
+/* Team Member Cards */
+.team-member-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-member-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 0.6s;
+}
+
+.team-member-card:hover::before {
+  left: 100%;
+}
+
+.team-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px hsl(var(--metaverse-shadow) / 0.3);
+}
+
+/* Technology Icons Animation */
+.tech-icon {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.tech-icon:hover {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Feature Cards Enhanced */
+.feature-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.feature-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--metaverse-crystal) / 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover::after {
+  opacity: 1;
+}
+
+/* Contact Cards Interactive */
+.contact-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 30px hsl(var(--metaverse-shadow) / 0.2);
+}
+
+.contact-card:nth-child(1):hover {
+  box-shadow: 0 15px 30px rgba(239, 68, 68, 0.2);
+}
+
+.contact-card:nth-child(2):hover {
+  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+}
+
+.contact-card:nth-child(3):hover {
+  box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
+}
+
+/* Stats Counter Animation */
+.stats-counter {
+  font-variant-numeric: tabular-nums;
+  transition: all 0.3s ease;
+}
+
+.stats-counter:hover {
+  transform: scale(1.1);
+  color: hsl(var(--primary));
+}
+
+/* Background Particles Effect */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Enhanced Glass Effect */
+.glass-card-enhanced {
+  background: hsl(var(--glass-bg) / 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--glass-border) / 0.5);
+  box-shadow:
+    0 8px 32px hsl(var(--metaverse-shadow) / 0.1),
+    inset 0 1px 0 hsl(var(--glass-bg) / 0.5);
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .roadmap-phase {
+    padding-left: 1rem;
+  }
+
+  .roadmap-phase::before {
+    left: 12px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Loading States */
+.loading-shimmer {
+  background: linear-gradient(90deg,
+    hsl(var(--glass-bg) / 0.5) 25%,
+    hsl(var(--glass-bg) / 0.8) 50%,
+    hsl(var(--glass-bg) / 0.5) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

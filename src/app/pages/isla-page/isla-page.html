@@ -1,1 +1,418 @@
-<p>isla-page works!</p>
+
+<!-- Hero Section -->
+
+
+<!-- Islands Catalog Section -->
+<section class="py-20 bg-gradient-to-b from-transparent to-[hsl(var(--muted)_/_0.3)]">
+  <div class="container mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-futuristic font-bold mb-6 animate-fade-in">
+        <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+          Catálogo de Islas
+        </span>
+      </h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in">
+        Explora nuestra colección completa de islas educativas, cada una diseñada para ofrecer experiencias de aprendizaje únicas.
+      </p>
+    </div>
+
+    <!-- Advanced Filters Bar -->
+    <div class="glass-card p-6 mb-8 animate-fade-in">
+      <div class="grid md:grid-cols-5 gap-4 items-center">
+        <!-- Sort By -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2">Ordenar por:</label>
+          <select class="w-full px-3 py-2 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+            <option>Más populares</option>
+            <option>Más recientes</option>
+            <option>Mayor rating</option>
+            <option>Alfabético A-Z</option>
+            <option>Alfabético Z-A</option>
+          </select>
+        </div>
+
+        <!-- Category Filter -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2">Categoría:</label>
+          <select class="w-full px-3 py-2 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+            <option>Todas las categorías</option>
+            <option>Matemáticas</option>
+            <option>Física</option>
+            <option>Química</option>
+            <option>Biología</option>
+            <option>Historia</option>
+            <option>Lenguaje</option>
+          </select>
+        </div>
+
+        <!-- Tags Filter -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2">Etiquetas:</label>
+          <select class="w-full px-3 py-2 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+            <option>Todas las etiquetas</option>
+            <option>Cálculo</option>
+            <option>Álgebra</option>
+            <option>Geometría</option>
+            <option>Estadística</option>
+            <option>Trigonometría</option>
+          </select>
+        </div>
+
+        <!-- Year Filter -->
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2">Año:</label>
+          <select class="w-full px-3 py-2 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-lg text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary">
+            <option>Todo el tiempo</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+          </select>
+        </div>
+
+        <!-- View Toggle -->
+        <div class="flex items-end space-x-2">
+          <button class="glass-card p-2 hover:neon-glow transition-all duration-300">
+            <span class="text-xl">📋</span>
+          </button>
+          <button class="glass-card p-2 hover:neon-glow transition-all duration-300">
+            <span class="text-xl">⏹️</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Islands Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Island Card 1 - Most Popular -->
+      <div class="island-card animate-fade-in stagger-1">
+        <div class="relative overflow-hidden rounded-xl mb-4">
+          <div class="h-48 bg-gradient-to-br from-purple-400 to-blue-600 flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div class="text-white text-center z-10">
+              <div class="text-4xl mb-2">🧮</div>
+              <h4 class="font-futuristic font-bold">Nexus Central</h4>
+            </div>
+          </div>
+          <!-- Badges -->
+          <div class="absolute top-4 left-4 flex space-x-2">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-primary">Matemáticas</span>
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-red-500">🔥 Popular</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-green-500">🟢 234 en línea</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Nexus Central</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">
+              El hub principal del metaverso educativo donde estudiantes y profesores se conectan y colaboran en tiempo real.
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1">
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Cálculo</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Álgebra</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Geometría</span>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex justify-between items-center text-sm text-muted-foreground mb-4">
+            <span>👥 15,420 visitas</span>
+            <span>⭐ 4.8/5.0</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex space-x-2">
+            <button class="flex-1 glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm">
+              👁️ Vista previa
+            </button>
+            <a href="/isla/1" class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+              🚀 Explorar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island Card 2 - New Release -->
+      <div class="island-card animate-fade-in stagger-2">
+        <div class="relative overflow-hidden rounded-xl mb-4">
+          <div class="h-48 bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div class="text-white text-center z-10">
+              <div class="text-4xl mb-2">🌳</div>
+              <h4 class="font-futuristic font-bold">Cyber Gardens</h4>
+            </div>
+          </div>
+          <!-- Badges -->
+          <div class="absolute top-4 left-4 flex space-x-2">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-primary">Biología</span>
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-blue-500">🆕 Nuevo</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-green-500">🟢 156 en línea</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Cyber Gardens</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">
+              Explora ecosistemas virtuales bioluminiscentes y aprende sobre botánica y biología de manera inmersiva.
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1">
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Botánica</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Ecología</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Virtual</span>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex justify-between items-center text-sm text-muted-foreground mb-4">
+            <span>👥 8,750 visitas</span>
+            <span>⭐ 4.6/5.0</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex space-x-2">
+            <button class="flex-1 glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm">
+              👁️ Vista previa
+            </button>
+            <a href="/isla/1" class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+              🚀 Explorar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island Card 3 - Gaming -->
+      <div class="island-card animate-fade-in stagger-3">
+        <div class="relative overflow-hidden rounded-xl mb-4">
+          <div class="h-48 bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div class="text-white text-center z-10">
+              <div class="text-4xl mb-2">⚡</div>
+              <h4 class="font-futuristic font-bold">Neon Arena</h4>
+            </div>
+          </div>
+          <!-- Badges -->
+          <div class="absolute top-4 left-4 flex space-x-2">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-primary">Física</span>
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-purple-500">🎮 Gaming</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-green-500">🟢 89 en línea</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Neon Arena</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">
+              Zona de combate futurista donde los conceptos físicos se convierten en emocionantes desafíos gamificados.
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1">
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Física</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Gaming</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Competitivo</span>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex justify-between items-center text-sm text-muted-foreground mb-4">
+            <span>👥 12,300 visitas</span>
+            <span>⭐ 4.7/5.0</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex space-x-2">
+            <button class="flex-1 glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm">
+              👁️ Vista previa
+            </button>
+            <a href="/isla/1" class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+              🚀 Explorar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island Card 4 - Educational -->
+      <div class="island-card animate-fade-in stagger-4">
+        <div class="relative overflow-hidden rounded-xl mb-4">
+          <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div class="text-white text-center z-10">
+              <div class="text-4xl mb-2">🎓</div>
+              <h4 class="font-futuristic font-bold">Knowledge Hub</h4>
+            </div>
+          </div>
+          <!-- Badges -->
+          <div class="absolute top-4 left-4 flex space-x-2">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-primary">Historia</span>
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-yellow-500">📚 Educativo</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-green-500">🟢 45 en línea</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Knowledge Hub</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">
+              Centro educativo virtual con aulas interactivas y experiencias de aprendizaje inmersivo para todas las materias.
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1">
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Historia</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Educación</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Interactivo</span>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex justify-between items-center text-sm text-muted-foreground mb-4">
+            <span>👥 5,670 visitas</span>
+            <span>⭐ 4.5/5.0</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex space-x-2">
+            <button class="flex-1 glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm">
+              👁️ Vista previa
+            </button>
+            <a href="/isla/1" class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+              🚀 Explorar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island Card 5 - Commerce -->
+      <div class="island-card animate-fade-in stagger-5">
+        <div class="relative overflow-hidden rounded-xl mb-4">
+          <div class="h-48 bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div class="text-white text-center z-10">
+              <div class="text-4xl mb-2">🏪</div>
+              <h4 class="font-futuristic font-bold">Market District</h4>
+            </div>
+          </div>
+          <!-- Badges -->
+          <div class="absolute top-4 left-4 flex space-x-2">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-primary">Economía</span>
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-emerald-500">💼 Comercio</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-green-500">🟢 67 en línea</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Market District</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">
+              Distrito comercial donde usuarios pueden comprar, vender e intercambiar bienes virtuales y aprender sobre economía.
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1">
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Economía</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Comercio</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Virtual</span>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex justify-between items-center text-sm text-muted-foreground mb-4">
+            <span>👥 9,234 visitas</span>
+            <span>⭐ 4.4/5.0</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex space-x-2">
+            <button class="flex-1 glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm">
+              👁️ Vista previa
+            </button>
+            <a href="/isla/1" class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+              🚀 Explorar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Island Card 6 - Adventure -->
+      <div class="island-card animate-fade-in stagger-6">
+        <div class="relative overflow-hidden rounded-xl mb-4">
+          <div class="h-48 bg-gradient-to-br from-pink-400 to-purple-600 flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div class="text-white text-center z-10">
+              <div class="text-4xl mb-2">🗺️</div>
+              <h4 class="font-futuristic font-bold">Adventure Realm</h4>
+            </div>
+          </div>
+          <!-- Badges -->
+          <div class="absolute top-4 left-4 flex space-x-2">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-primary">Geografía</span>
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-orange-500">🗺️ Aventura</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-green-500">🟢 123 en línea</span>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Adventure Realm</h3>
+            <p class="text-muted-foreground text-sm leading-relaxed">
+              Mundo de aventuras donde los usuarios pueden explorar, completar misiones y descubrir tesoros mientras aprenden geografía.
+            </p>
+          </div>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1">
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Geografía</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Aventura</span>
+            <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">Exploración</span>
+          </div>
+
+          <!-- Stats -->
+          <div class="flex justify-between items-center text-sm text-muted-foreground mb-4">
+            <span>👥 7,891 visitas</span>
+            <span>⭐ 4.6/5.0</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="flex space-x-2">
+            <button class="flex-1 glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm">
+              👁️ Vista previa
+            </button>
+            <a href="/isla/1" class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+              🚀 Explorar
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load More / Pagination -->
+    <div class="text-center mt-12 animate-fade-in">
+      <button class="metaverse-button px-8 py-4 hover:scale-105">
+        ⬇️ Cargar más islas
+      </button>
+      <p class="text-sm text-muted-foreground mt-4">
+        Mostrando 6 de 47 islas disponibles
+      </p>
+    </div>
+  </div>
+</section>
+
+

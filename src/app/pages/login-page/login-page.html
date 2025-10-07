@@ -1,1 +1,90 @@
-<p>login-page works!</p>
+<!-- Hero Section -->
+<main class="relative min-h-screen hero-gradient">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[hsl(var(--bg-gradient-start))] to-[hsl(var(--bg-gradient-end))]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-light)_/_0.1),hsl(var(--metaverse-crystal)_/_0.05),transparent)]"></div>
+
+  <!-- Login/Register Content -->
+  <div class="relative z-10 container mx-auto px-6 pt-20 pb-16">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12 animate-fade-in">
+        <h1 class="text-5xl md:text-6xl font-futuristic font-bold mb-6 animate-cinematic-entrance">
+          <span class="block text-primary neon-text">Acceso al</span>
+          <span class="block bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--primary-light))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+            {{env.NOMBRE_APLICACION}}
+          </span>
+        </h1>
+        <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          Ingresa a tu cuenta o crea una nueva para comenzar tu aventura educativa en el metaverso más avanzado.
+        </p>
+      </div>
+
+      <!-- Mode Switch -->
+      <div class="glass-card p-8 mb-8 animate-fade-in">
+        <div class="flex items-center justify-center space-x-20 bg-[hsl(var(--glass-bg)_/_0.3)] rounded-xl p-2 mb-8">
+          <button
+            (click)="cambiarFormulario()"
+            [ngClass]="{
+              'active bg-primary text-primary-foreground shadow-lg transform scale-105': esFormularioLogin(),
+              'border-glow text-muted-foreground hover:text-primary hover:bg-[hsl(var(--glass-bg)_/_0.5)]': esFormularioRegistro()
+            }"
+            class=" mode-switch-btn px-6 py-3 rounded-lg font-futuristic font-semibold text-sm transition-all duration-300">
+            🔐 Iniciar Sesión
+          </button>
+          <button
+            (click)="cambiarFormulario()"
+            [ngClass]="{
+              'active bg-primary text-primary-foreground shadow-lg transform scale-105': esFormularioRegistro(),
+              'border-glow text-muted-foreground hover:text-primary hover:bg-[hsl(var(--glass-bg)_/_0.5)]': esFormularioLogin()
+            }"
+            class="mode-switch-btn px-6 py-3 rounded-lg font-futuristic font-semibold text-sm transition-all duration-300">
+            ⚡ Crear Cuenta
+          </button>
+        </div>
+
+        <!-- Form Container with Animation -->
+        <div class="relative overflow-hidden min-h-[400px]">
+          @if (esFormularioLogin()) {
+            <div class="form-container animate-fade-in">
+              <h2 class="text-2xl font-futuristic font-bold text-primary mb-6 text-center">{{ tituloFormulario() }}</h2>
+              <app-login-form></app-login-form>
+            </div>
+          }@else{
+            <div class="form-container animate-fade-in">
+              <h2 class="text-2xl font-futuristic font-bold text-primary mb-6 text-center">{{ tituloFormulario() }}</h2>
+              <app-registro-form></app-registro-form>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Features Preview -->
+      <div class="grid md:grid-cols-4 gap-6 animate-fade-in">
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300">
+          <div class="text-4xl mb-4">🏝️</div>
+          <h3 class="text-lg font-futuristic font-semibold text-primary mb-2">Islas Educativas</h3>
+          <p class="text-sm text-muted-foreground">{{ getEstadisticasMetaverso().islasDisponibles }} experiencias disponibles</p>
+        </div>
+
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300">
+          <div class="text-4xl mb-4">👥</div>
+          <h3 class="text-lg font-futuristic font-semibold text-primary mb-2">Comunidad Global</h3>
+          <p class="text-sm text-muted-foreground">{{ getEstadisticasMetaverso().usuariosActivos | number:'1.0-0' }} usuarios registrados</p>
+        </div>
+
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300">
+          <div class="text-4xl mb-4">🟢</div>
+          <h3 class="text-lg font-futuristic font-semibold text-primary mb-2">En línea ahora</h3>
+          <p class="text-sm text-muted-foreground">{{ getEstadisticasMetaverso().usuariosEnLinea }} estudiantes activos</p>
+        </div>
+
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300">
+          <div class="text-4xl mb-4">⭐</div>
+          <h3 class="text-lg font-futuristic font-semibold text-primary mb-2">Satisfacción</h3>
+          <p class="text-sm text-muted-foreground">{{ getEstadisticasMetaverso().satisfaccion }}% de satisfacción</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

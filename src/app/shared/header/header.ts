@@ -35,15 +35,15 @@ export class Header {
       titulo:'Explorar Islas',
       ruta:'/islas',
     },
+    {
+      titulo:'Acerca de',
+      ruta:'/about',
+    },
   ]
   menuOptionsButton:MenuOptionButton[] = [
     {
       titulo:'🔐 Login',
       ruta:'/login',
-    },
-    {
-      titulo:'Registrarse',
-      ruta:'/login',
-    },
+    }
   ]
 }

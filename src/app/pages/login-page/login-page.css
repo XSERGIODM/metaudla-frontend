@@ -1,0 +1,111 @@
+/* Login Page Custom Styles */
+
+/* Mode Switch Button Styles */
+.mode-switch-btn {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mode-switch-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.mode-switch-btn:hover::before {
+  left: 100%;
+}
+
+.mode-switch-btn.active {
+  box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  border: 1px solid hsl(var(--primary));
+}
+
+.mode-switch-btn.active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 8px;
+  border: solid hsl(var(--primary-foreground));
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Form Container Animation */
+.form-container {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced glass effect for active state */
+.mode-switch-btn.active {
+  backdrop-filter: blur(10px);
+  background: hsl(var(--primary) / 0.9);
+}
+
+/* Hover effects for better UX */
+.mode-switch-btn:hover:not(.active) {
+  background: hsl(var(--glass-bg) / 0.5);
+  transform: translateY(-1px);
+}
+
+/* Focus styles for accessibility */
+.mode-switch-btn:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mode-switch-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Loading state for forms */
+.form-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.form-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid hsl(var(--glass-border));
+  border-top-color: hsl(var(--primary));
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
