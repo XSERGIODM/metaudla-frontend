@@ -1,0 +1,37 @@
+<header class="relative z-50 backdrop-blur-md bg-[hsl(var(--glass-bg)_/_0.8)] border-b border-[hsl(var(--glass-border))]">
+  <nav class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a
+        [routerLink]="menuOptions.at(0)?.ruta"
+        class="flex items-center space-x-2">
+          <img [src]="env.LOGO_APLICACION" alt="Logo" class="w-10 h-auto" >
+        <span class="font-futuristic font-bold text-xl text-primary">{{env.NOMBRE_APLICACION}}</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        @for (item of menuOptions; track item) {
+          <a
+            [routerLink]="item.ruta"
+            routerLinkActive="border-b-2 border-primary"
+            class="text-foreground hover:text-primary transition-colors duration-300 font-medium">
+            {{ item.titulo}}
+          </a>
+        }
+      </div>
+
+      <!-- Auth Buttons -->
+      <div class="flex items-center space-x-4">
+        @for (item of menuOptionsButton; track item) {
+          <a
+            [routerLink]="item.ruta"
+            routerLinkActive="border-b-2 border-primary"
+            class="glass-card px-4 py-2 text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300">
+            {{ item.titulo}}
+          </a>
+        }
+      </div>
+    </div>
+  </nav>
+</header>

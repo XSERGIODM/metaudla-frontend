@@ -1,0 +1,56 @@
+<footer class="backdrop-blur-md bg-[hsl(var(--glass-bg)_/_0.9)] border-t border-[hsl(var(--glass-border))]">
+  <div class="container mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-4 gap-8">
+      <!-- Logo y Descripción -->
+      <div class="md:col-span-1">
+        <div class="flex items-center space-x-2 mb-4">
+            <img [src]="env.LOGO_EMPRESA" alt="Logo" class="w-10 h-auto">
+          <span class="font-futuristic font-bold text-primary">{{env.NOMBRE_EMPRESA}}</span>
+        </div>
+        <p class="text-sm text-muted-foreground leading-relaxed">
+          {{env.DESCRIPTION_EMPRESA}}
+        </p>
+      </div>
+
+      <!-- Enlaces Rápidos -->
+      <div>
+        <h4 class="font-futuristic font-semibold text-primary mb-4">Enlaces Rápidos</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Inicio</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Islas</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Acerca de</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Soporte</a></li>
+        </ul>
+      </div>
+
+      <!-- Comunidad -->
+      <div>
+        <h4 class="font-futuristic font-semibold text-primary mb-4">Comunidad</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Discord</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Reddit</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Foros</a></li>
+          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Eventos</a></li>
+        </ul>
+      </div>
+
+      <!-- Conecta -->
+      <div>
+        <h4 class="font-futuristic font-semibold text-primary mb-4">Conecta</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="text-muted-foreground hover:text-primary transition-colors text-xl">🐦</a>
+          <a href="#" class="text-muted-foreground hover:text-primary transition-colors text-xl">📘</a>
+          <a href="#" class="text-muted-foreground hover:text-primary transition-colors text-xl">📺</a>
+          <a href="#" class="text-muted-foreground hover:text-primary transition-colors text-xl">📧</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="border-t border-[hsl(var(--glass-border))] mt-8 pt-8 text-center">
+      <p class="text-sm text-muted-foreground">
+        © 2024 Emerald Isle Metaverse. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>

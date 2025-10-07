@@ -1,0 +1,68 @@
+<main class="relative min-h-screen hero-gradient">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[hsl(var(--bg-gradient-start))] to-[hsl(var(--bg-gradient-end))]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-light)_/_0.1),hsl(var(--metaverse-crystal)_/_0.05),transparent)]"></div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 container mx-auto px-6 pt-20 pb-16">
+    <div class="text-center max-w-6xl mx-auto">
+      <!-- Logo Principal -->
+      <div class="mb-8 animate-fade-in">
+
+          <div class="w-36 h-36 bg-gradient-to-br from-[hsl(var(--primary))] via-[hsl(var(--primary-light))] to-[hsl(var(--metaverse-crystal))] rounded-2xl flex items-center justify-center mx-auto mb-4 animate-pulse-glow">
+            <img [src]="env.LOGO_APLICACION" alt="Logo" class="w-40 h-auto animate-float">
+          </div>
+      </div>
+
+      <!-- Título Principal -->
+      <h1 class="text-5xl md:text-7xl font-futuristic font-bold mb-6 animate-cinematic-entrance stagger-1">
+        <span class="block text-primary neon-text">Bienvenido al</span>
+        <span class="block bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--primary-light))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+          {{env.NOMBRE_APLICACION}}
+        </span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 animate-fade-in stagger-2 leading-relaxed">
+        {{env.DESCRIPTION_APLICACION}}
+      </p>
+
+      <!-- Botones Principales -->
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20 animate-fade-in stagger-3">
+        <button class="metaverse-button text-lg px-8 py-4 hover:scale-105">
+          ⬇️ Descargar Launcher
+        </button>
+        <button class="glass-card px-8 py-4 text-lg font-semibold text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 hover:neon-glow hover:scale-105">
+          🏝️ Explorar Islas →
+        </button>
+      </div>
+
+      <!-- Características Destacadas -->
+      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-24">
+        <div class="island-card text-center animate-fade-in stagger-1">
+          <div class="text-4xl mb-4">🌟</div>
+          <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Mundos Infinitos</h3>
+          <p class="text-muted-foreground">
+            Descubre islas únicas con experiencias inmersivas
+          </p>
+        </div>
+
+        <div class="island-card text-center animate-fade-in stagger-2">
+          <div class="text-4xl mb-4">🔮</div>
+          <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Tecnología Avanzada</h3>
+          <p class="text-muted-foreground">
+            Realidad virtual de última generación
+          </p>
+        </div>
+
+        <div class="island-card text-center animate-fade-in stagger-3">
+          <div class="text-4xl mb-4">🌍</div>
+          <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Comunidad Global</h3>
+          <p class="text-muted-foreground">
+            Conecta con usuarios de todo el mundo
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

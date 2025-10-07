@@ -1,1 +1,364 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@tailwind utilities;
+
+/* Custom theme configuration for Tailwind CSS v4 */
+@theme {
+  --color-foreground: hsl(var(--foreground));
+  --color-background: hsl(var(--background));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+}
+
+/* Custom utility classes for Tailwind CSS v4 */
+@utility glass-card {
+  @apply backdrop-blur-md bg-[hsl(var(--glass-bg)_/_0.7)] border border-[hsl(var(--glass-border))] rounded-xl shadow-lg;
+}
+
+@utility neon-glow {
+  box-shadow: 0 0 20px hsl(var(--metaverse-glow) / 0.3), 0 0 40px hsl(var(--metaverse-glow) / 0.1);
+}
+
+@utility neon-text {
+  text-shadow: 0 0 10px hsl(var(--metaverse-glow) / 0.8), 0 0 20px hsl(var(--metaverse-glow) / 0.4);
+}
+
+@utility font-futuristic {
+  font-family: 'Orbitron', monospace;
+}
+
+@utility metaverse-button {
+  @apply glass-card px-6 py-3 font-futuristic font-semibold text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 hover:neon-glow hover:scale-105;
+}
+
+@utility island-card {
+  @apply glass-card p-6 hover:neon-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer;
+}
+
+@utility hero-gradient {
+  background: radial-gradient(
+    ellipse at center,
+    hsl(var(--primary-light) / 0.1),
+    hsl(var(--metaverse-crystal) / 0.05),
+    transparent
+  );
+}
+
+@utility text-glow {
+  text-shadow: 0 0 20px currentColor;
+}
+
+@utility border-glow {
+  box-shadow: inset 0 0 20px hsl(var(--metaverse-glow) / 0.2);
+}
+
+/* Metaverse Design System - Futuristic Green Theme */
+
+@layer base {
+  :root {
+    /* Core colors using emerald green theme */
+    --background: 210 20% 98%;
+    --foreground: 210 40% 2%;
+
+    /* Primary emerald colors */
+    --primary: 142 76% 36%; /* emerald-600 */
+    --primary-foreground: 210 40% 98%;
+    --primary-light: 142 69% 58%; /* emerald-400 */
+    --primary-dark: 140 86% 33%; /* emerald-700 */
+
+    /* Secondary cyan accents */
+    --secondary: 197 71% 73%; /* cyan-300 */
+    --secondary-foreground: 210 40% 8%;
+    --secondary-dark: 188 94% 37%; /* cyan-600 */
+
+    /* Metaverse specific colors */
+    --metaverse-glow: 142 69% 58%;
+    --metaverse-crystal: 197 71% 73%;
+    --metaverse-shadow: 210 40% 8%;
+
+    /* Glass morphism */
+    --glass-bg: 142 50% 95%;
+    --glass-border: 142 30% 85%;
+
+    /* Background gradients */
+    --bg-gradient-start: 210 20% 98%;
+    --bg-gradient-end: 142 20% 96%;
+
+    --card: 210 20% 98%;
+    --card-foreground: 210 40% 8%;
+
+    --popover: 210 20% 98%;
+    --popover-foreground: 210 40% 8%;
+
+    --muted: 142 20% 96%;
+    --muted-foreground: 210 20% 45%;
+
+    --accent: 142 30% 90%;
+    --accent-foreground: 210 40% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 142 30% 85%;
+    --input: 142 30% 85%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 210 50% 3%;
+    --foreground: 210 40% 98%;
+
+    --primary: 142 69% 58%;
+    --primary-foreground: 210 50% 3%;
+    --primary-light: 142 76% 65%;
+    --primary-dark: 142 69% 45%;
+
+    --secondary: 188 94% 37%;
+    --secondary-foreground: 210 40% 98%;
+    --secondary-dark: 188 94% 25%;
+
+    --metaverse-glow: 142 69% 58%;
+    --metaverse-crystal: 188 94% 50%;
+    --metaverse-shadow: 210 50% 8%;
+
+    --glass-bg: 210 50% 8%;
+    --glass-border: 142 30% 25%;
+
+    --bg-gradient-start: 210 50% 3%;
+    --bg-gradient-end: 142 30% 8%;
+
+    --card: 210 50% 5%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 210 50% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    --muted: 210 40% 10%;
+    --muted-foreground: 210 20% 65%;
+
+    --accent: 210 40% 15%;
+    --accent-foreground: 210 40% 98%;
+
+    --border: 210 40% 15%;
+    --input: 210 40% 15%;
+    --ring: 142 69% 58%;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-[hsl(var(--bg-gradient-start))] to-[hsl(var(--bg-gradient-end))] text-foreground min-h-screen;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-futuristic {
+    font-family: 'Orbitron', monospace;
+  }
+}
+
+@layer components {
+  /* Metaverse UI Components */
+  .glass-card {
+    @apply backdrop-blur-md bg-[hsl(var(--glass-bg)_/_0.7)] border border-[hsl(var(--glass-border))] rounded-xl shadow-lg;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--metaverse-glow) / 0.3), 0 0 40px hsl(var(--metaverse-glow) / 0.1);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px hsl(var(--metaverse-glow) / 0.8), 0 0 20px hsl(var(--metaverse-glow) / 0.4);
+  }
+
+  .holographic {
+    background: linear-gradient(
+      45deg,
+      hsl(var(--primary)),
+      hsl(var(--metaverse-crystal)),
+      hsl(var(--primary-light))
+    );
+    background-size: 200% 200%;
+    animation: holographic-shift 3s ease-in-out infinite;
+  }
+
+  .metaverse-button {
+    @apply glass-card px-6 py-3 font-futuristic font-semibold text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 hover:neon-glow hover:scale-105;
+  }
+
+  .island-card {
+    @apply glass-card p-6 hover:neon-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer;
+  }
+
+  .hero-gradient {
+    background: radial-gradient(
+      ellipse at center,
+      hsl(var(--primary-light) / 0.1),
+      hsl(var(--metaverse-crystal) / 0.05),
+      transparent
+    );
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 20px currentColor;
+  }
+
+  .border-glow {
+    box-shadow: inset 0 0 20px hsl(var(--metaverse-glow) / 0.2);
+  }
+}
+
+/* Enhanced Animations - Inspired by cinematic presentations */
+@keyframes holographic-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--metaverse-glow) / 0.3), 0 0 40px hsl(var(--metaverse-glow) / 0.1);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--metaverse-glow) / 0.6), 0 0 60px hsl(var(--metaverse-glow) / 0.2);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cinematic-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) translateZ(0) scale(0.9);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-cinematic-entrance {
+  animation: cinematic-entrance 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.animate-holographic-shift {
+  animation: holographic-shift 4s ease-in-out infinite;
+}
+
+/* Parallax and depth effects */
+.parallax-slow {
+  transform: translateZ(0);
+  animation: float 6s ease-in-out infinite;
+}
+
+.parallax-fast {
+  transform: translateZ(0);
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Interactive hover animations */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px hsl(var(--metaverse-shadow) / 0.3);
+}
+
+/* Staggered animation utilities */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Additional responsive utilities */
+@media (max-width: 768px) {
+  .animate-cinematic-entrance {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  .font-futuristic {
+    font-family: 'Orbitron', monospace;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--glass-bg));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary-light));
+}

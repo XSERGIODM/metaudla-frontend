@@ -1,0 +1,21 @@
+<!-- Sección de Islas Virtuales -->
+<section class="py-20 bg-gradient-to-b from-transparent to-[hsl(var(--muted)_/_0.3)]">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-futuristic font-bold mb-6 animate-fade-in">
+        <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+          Explora Nuestras Islas Virtuales
+        </span>
+      </h2>
+      <p class="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in">
+        Cada isla ofrece experiencias únicas y comunidades vibrantes. Descubre mundos infinitos de posibilidades.
+      </p>
+    </div>
+    <!-- Grid de Islas -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      @for (isla of ListaIslas(); track isla.id) {
+        <app-grid-isla [isla]="isla"></app-grid-isla>
+      }
+    </div>
+  </div>
+</section>
