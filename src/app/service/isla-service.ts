@@ -1,6 +1,9 @@
 import {inject, Injectable, signal} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import type {Isla} from '../type/Isla';
+import {environment} from '@environments/environment';
+import {Paginacion} from '../type/Paginacion';
 
 
 @Injectable({
@@ -10,26 +13,47 @@ import type {Isla} from '../type/Isla';
 
 export class IslaService {
 
-  http= inject(HttpClient);
-  islas= signal<Isla[]>([]);
-  islaCarga= signal<boolean>(true);
+  http = inject(HttpClient);
+  islaCarga = signal<boolean>(true);
+  api = environment.API_URL + "/isla";
+
+  listaTendencia = signal<Isla[]>([]);
+  lista = signal<Isla[]>([]);
 
   constructor() {
-    this.listarUsuarios();
+    this.llenarListaTendencia();
+    this.llenarLista();
   }
 
-  listarUsuarios(): void {
-    this.http.get<Isla[]>('http://localhost:8080/api/prueba/listar/isla')
-      .subscribe((respuesta)=>{
-        this.islas.set(respuesta)
-        this.islaCarga.set(false);
-        console.log(this.islas());
-        }
-      )
+  listarIslas(pagina: number, tamanio: number): Observable<Paginacion<Isla>> {
+    const params = new HttpParams()
+      .set('pagina', pagina.toString())
+      .set('tamanio', tamanio.toString());
+    return this.http.get<Paginacion<Isla>>(`${this.api}/paginadas`, {params});
   }
 
-  // Método que devuelve solo las primeras 3 islas
-  obtenerTresIslas(): Isla[] {
-    return this.islas().slice(0, 3);
+  //Islas tendencias paginadas
+  islasTendencias(pagina: number, tamanio: number): Observable<Paginacion<Isla>> {
+    const params = new HttpParams()
+      .set('pagina', pagina.toString())
+      .set('tamanio', tamanio.toString());
+    this.islaCarga.set(true);
+    return this.http.get<Paginacion<Isla>>(this.api+"/tendencias", {params});
   }
+
+  llenarListaTendencia() {
+    this.islasTendencias(0, 3).subscribe((lista: Paginacion<Isla>) => {
+      this.islaCarga.set(false);
+      this.listaTendencia.set(lista.content);
+    });
+  }
+
+  llenarLista() {
+    this.listarIslas(0, 20).subscribe((lista: Paginacion<Isla>) => {
+      this.islaCarga.set(false);
+      this.lista.set(lista.content);
+    });
+  }
+
+
 }
