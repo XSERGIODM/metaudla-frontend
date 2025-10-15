@@ -14,6 +14,6 @@ import {GridIsla} from '../../shared/grid-isla/grid-isla';
   templateUrl: './isla-page.html',
   styleUrl: './isla-page.css'
 })
-export class IslaPage {
+export default class IslaPage {
   lista= inject(IslaService);
 }

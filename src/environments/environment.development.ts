@@ -7,7 +7,8 @@ export const environment = {
   NOMBRE_EMPRESA: 'Universidad de la Amazonia',
   DESCRIPTION_EMPRESA: 'Explora islas virtuales únicas, conecta con otros usuarios y vive experiencias inmersivas en nuestro revolucionario metaverso futurista.',
   //---------------------------------------------------------------------------------------
-
+  FOTO_MILLAN: '/Millan.png',
+  FOTO_SERGIO: '/Sergio.png',
   //------------------------API-------------------------------------
   API_URL: 'http://localhost:8080/api'
   //---------------------------------------------------------------------------------------

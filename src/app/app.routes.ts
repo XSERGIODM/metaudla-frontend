@@ -1,34 +1,32 @@
 import { Routes } from '@angular/router';
-import {Home} from './pages/home/home';
-import {IslaPage} from './pages/isla-page/isla-page';
-import {IslaDetalle} from './pages/isla-detalle/isla-detalle';
-import {LoginPage} from './pages/login-page/login-page';
-import {AboutPage} from './pages/about-page/about-page';
+
 
 export const routes: Routes = [
   {
     path: '',
-    component: Home
+    redirectTo: 'home'
   },
   {
     path: 'home',
-    component: Home
+    loadComponent: () => import('./pages/home/home'),
   },
   {
     path: 'islas',
-    component: IslaPage
+    loadComponent: () => import('./pages/isla-page/isla-page'),
+    children: [
+      {
+        path: 'isla/:key',
+        loadComponent: () => import('./pages/isla-detalle/isla-detalle'),
+      },
+    ]
   },
   {
     path: 'login',
-    component: LoginPage
+    loadComponent: () => import('./pages/login-page/login-page')
   },
   {
     path: 'about',
-    component: AboutPage
-  },
-  {
-    path: 'isla/:islaId',
-    component: IslaDetalle
+    loadComponent: () => import('./pages/about-page/about-page')
   },
   {
     path:'**',

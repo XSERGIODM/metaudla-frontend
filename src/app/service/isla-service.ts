@@ -1,6 +1,6 @@
 import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import type {Isla} from '../type/Isla';
 import {environment} from '@environments/environment';
 import {Paginacion} from '../type/Paginacion';
@@ -14,11 +14,14 @@ import {Paginacion} from '../type/Paginacion';
 export class IslaService {
 
   http = inject(HttpClient);
-  islaCarga = signal<boolean>(true);
+
   api = environment.API_URL + "/isla";
 
   listaTendencia = signal<Isla[]>([]);
   lista = signal<Isla[]>([]);
+  islaCarga = signal<boolean>(true);
+
+
 
   constructor() {
     this.llenarListaTendencia();
@@ -53,6 +56,14 @@ export class IslaService {
       this.islaCarga.set(false);
       this.lista.set(lista.content);
     });
+  }
+
+  obtenerIsla(id: string){
+    return this.http.get<Isla>(`${this.api}/${id}`).pipe(
+      map((isla: Isla) => {
+        return isla;
+      })
+    );
   }
 
 

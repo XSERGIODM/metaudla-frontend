@@ -1,0 +1,20 @@
+<div class="glass-card p-8 text-center animate-fade-in stagger-1">
+  <div
+    class="w-36 h-36 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-light))] rounded-full flex items-center justify-center neon-glow mx-auto mb-4">
+    <img
+      [ngSrc]="mienbro().imagen"
+      width="200" height="200"
+      alt="{{mienbro().nombre}}"
+      class="rounded-full object-top object-cover w-full h-full"
+    >
+  </div>
+  <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">
+    {{mienbro().nombre}}
+  </h3>
+  <p class="text-muted-foreground mb-4">
+    {{mienbro().descripcion}}
+  </p>
+  <p class="text-sm text-muted-foreground leading-relaxed">
+    {{mienbro().informacion}}
+  </p>
+</div>

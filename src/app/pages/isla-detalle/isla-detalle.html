@@ -8,10 +8,12 @@
   <div class="relative z-10 container mx-auto px-6 pt-20 pb-16">
     <!-- Back Button -->
     <div class="mb-8 animate-fade-in">
-      <button class="glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 flex items-center space-x-2">
+      <a
+        routerLink="/islas"
+        class="glass-card w-56 px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 flex items-center space-x-2">
         <span>←</span>
         <span>Volver al Catálogo</span>
-      </button>
+      </a>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
@@ -25,40 +27,40 @@
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               <div class="text-white text-center z-10">
                 <div class="text-6xl mb-4 animate-pulse-glow">🏝️</div>
-                <h3 class="text-2xl font-futuristic font-bold">{{ isla.nombre }}</h3>
+                <h3 class="text-2xl font-futuristic font-bold">{{ isla()?.nombre }}</h3>
                 <p class="text-sm opacity-80">Vista 3D Interactiva</p>
               </div>
             </div>
             <!-- Island Badges -->
             <div class="absolute top-4 left-4">
-              <span class="glass-card px-3 py-1 text-sm font-medium text-primary">{{ isla.categorias[0] || 'General' }}</span>
+              <span class="glass-card px-3 py-1 text-sm font-medium text-primary">{{ isla()?.categorias?.at(0) || 'General' }}</span>
             </div>
             <div class="absolute top-4 right-4">
-              <span class="glass-card px-3 py-1 text-sm font-medium text-white bg-green-500">🟢 {{ isla.visitas || 0 }} visitas</span>
+              <span class="glass-card px-3 py-1 text-sm font-medium text-white bg-green-500">🟢0 visitas</span>
             </div>
             <div class="absolute bottom-4 left-4">
-              <span class="glass-card px-3 py-1 text-sm font-medium text-white bg-black/50">⭐ {{ calcularPromedioRating() }}/5.0</span>
+              <span class="glass-card px-3 py-1 text-sm font-medium text-white bg-black/50">⭐ 00/5.0</span>
             </div>
           </div>
 
           <!-- Image Gallery -->
-          <div class="mb-6" *ngIf="isla.imagenes && isla.imagenes.length > 0">
+          <div class="mb-6">
             <h4 class="font-futuristic font-semibold text-primary mb-4">Galería de Imágenes</h4>
             <div class="grid grid-cols-3 gap-2">
-              <div class="h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg flex items-center justify-center" *ngFor="let imagen of isla.imagenes.slice(0, 3)">
+              <div class="h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg flex items-center justify-center">
                 <span class="text-white text-lg">🖼️</span>
               </div>
-              <div class="h-20 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center cursor-pointer hover:neon-glow transition-all duration-300" *ngIf="isla.imagenes.length > 3">
-                <span class="text-white text-sm font-futuristic">+{{ isla.imagenes.length - 3 }}</span>
+              <div class="h-20 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center cursor-pointer hover:neon-glow transition-all duration-300">
+                <span class="text-white text-sm font-futuristic">+++++</span>
               </div>
             </div>
           </div>
 
           <!-- Video Section -->
-          <div class="mb-6" *ngIf="isla.videos && isla.videos.length > 0">
+          <div class="mb-6">
             <h4 class="font-futuristic font-semibold text-primary mb-4">Videos Disponibles</h4>
             <div class="space-y-2">
-              <div class="glass-card p-3 flex items-center space-x-3" *ngFor="let video of isla.videos.slice(0, 2)">
+              <div class="glass-card p-3 flex items-center space-x-3">
                 <div class="w-12 h-12 bg-gradient-to-br from-red-400 to-pink-600 rounded-lg flex items-center justify-center">
                   <span class="text-white">▶️</span>
                 </div>
@@ -74,7 +76,7 @@
           <div class="space-y-3">
             <button class="w-full metaverse-button py-4 hover:scale-105 flex items-center justify-center space-x-2">
               <span>🚀</span>
-              <span>Entrar a {{ isla.nombre }}</span>
+              <span>Entrar a {{ isla()?.nombre }}</span>
             </button>
             <div class="grid grid-cols-2 gap-2">
               <button class="glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm flex items-center justify-center space-x-1">
@@ -97,19 +99,19 @@
           <div>
             <h1 class="text-4xl md:text-5xl font-futuristic font-bold mb-4">
               <span class="block bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--primary-light))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
-                {{ isla.nombre }}
+                {{ isla()?.nombre }}
               </span>
             </h1>
             <p class="text-lg text-muted-foreground leading-relaxed mb-4">
-              {{ isla.descripcion }}
+              {{ isla()?.descripcion }}
             </p>
 
             <!-- Status Badge -->
             <div class="inline-flex items-center space-x-2">
-              <span class="px-3 py-1 rounded-full text-sm font-medium" [class]="isla.estado === 'HABILITADO' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'">
-                {{ isla.estado === 'HABILITADO' ? '🟢 Habilitada' : '🔴 Deshabilitada' }}
+              <span class="px-3 py-1 rounded-full text-sm font-medium" [class]="isla()?.estado === 'HABILITADO' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'">
+                {{ isla()?.estado === 'HABILITADO' ? '🟢 Habilitada' : '🔴 Deshabilitada' }}
               </span>
-              <span class="text-muted-foreground text-sm">Versión {{ isla.version }}</span>
+              <span class="text-muted-foreground text-sm">Versión {{ isla()?.version }}</span>
             </div>
           </div>
 
@@ -118,8 +120,8 @@
             <div>
               <h3 class="text-lg font-futuristic font-semibold text-primary mb-3">Categorías</h3>
               <div class="flex flex-wrap gap-2">
-                <span class="glass-card px-3 py-1 text-sm font-medium text-primary" *ngFor="let categoria of isla.categorias">
-                  {{ categoria }}
+                <span class="glass-card px-3 py-1 text-sm font-medium text-primary">
+                  jaja
                 </span>
               </div>
             </div>
@@ -127,8 +129,8 @@
             <div>
               <h3 class="text-lg font-futuristic font-semibold text-primary mb-3">Etiquetas</h3>
               <div class="flex flex-wrap gap-2">
-                <span class="glass-card px-3 py-1 text-sm font-medium text-primary" *ngFor="let etiqueta of isla.etiquetas">
-                  {{ etiqueta }}
+                <span class="glass-card px-3 py-1 text-sm font-medium text-primary">
+                  ajajajajaja
                 </span>
               </div>
             </div>
@@ -139,19 +141,19 @@
             <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Estadísticas</h3>
             <div class="grid grid-cols-2 gap-4">
               <div class="text-center">
-                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla.visitas || 0 }}</div>
+                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.visitas || 0 }}</div>
                 <div class="text-sm text-muted-foreground">Visitas Totales</div>
               </div>
               <div class="text-center">
-                <div class="text-2xl font-futuristic font-bold text-primary">{{ calcularPromedioRating() }}/5.0</div>
+                <div class="text-2xl font-futuristic font-bold text-primary">000/5.0</div>
                 <div class="text-sm text-muted-foreground">Rating Promedio</div>
               </div>
               <div class="text-center">
-                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla.meGustaTipos?.length || 0 }}</div>
+                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.meGustaTipos?.length || 0 }}</div>
                 <div class="text-sm text-muted-foreground">Me gusta</div>
               </div>
               <div class="text-center">
-                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla.favoritoIds?.length || 0 }}</div>
+                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.favoritoIds?.length || 0 }}</div>
                 <div class="text-sm text-muted-foreground">En Favoritos</div>
               </div>
             </div>
@@ -163,21 +165,21 @@
             <div class="space-y-3">
               <div class="flex justify-between">
                 <span class="text-muted-foreground">Fecha de creación:</span>
-                <span class="font-futuristic font-medium text-primary">{{ isla.fechaCreacion | date:'dd/MM/yyyy' }}</span>
+                <span class="font-futuristic font-medium text-primary">{{ isla()?.fechaCreacion | date:'dd/MM/yyyy' }}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-muted-foreground">Última actualización:</span>
-                <span class="font-futuristic font-medium text-primary">{{ isla.fechaActualizacion | date:'dd/MM/yyyy' }}</span>
+                <span class="font-futuristic font-medium text-primary">{{ isla()?.fechaActualizacion | date:'dd/MM/yyyy' }}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-muted-foreground">ID de la isla:</span>
-                <span class="font-futuristic font-medium text-primary">#{{ isla.id }}</span>
+                <span class="font-futuristic font-medium text-primary">#{{ isla()?.id }}</span>
               </div>
             </div>
           </div>
 
           <!-- Download Link -->
-          <div class="glass-card p-6" *ngIf="isla.linkDescarga">
+          <div class="glass-card p-6">
             <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Descargar Recursos</h3>
             <p class="text-muted-foreground mb-4">
               Descarga materiales adicionales, assets y recursos complementarios para esta isla.
@@ -204,24 +206,24 @@
           <!-- Author Avatar -->
           <div class="flex-shrink-0">
             <div class="w-24 h-24 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-light))] rounded-full flex items-center justify-center neon-glow">
-              <span class="text-white font-futuristic font-bold text-2xl">{{ getInitials(isla.autorNombre) }}</span>
+              <span class="text-white font-futuristic font-bold text-2xl">{{isla()?.autorNombre}}</span>
             </div>
           </div>
 
           <!-- Author Info -->
           <div class="flex-grow text-center md:text-left">
-            <h3 class="text-2xl font-futuristic font-semibold text-primary mb-2">{{ isla.autorNombre }}</h3>
-            <p class="text-muted-foreground mb-2">{{ isla.autorCorreo }}</p>
+            <h3 class="text-2xl font-futuristic font-semibold text-primary mb-2">{{ isla()?.autorNombre }}</h3>
+            <p class="text-muted-foreground mb-2">{{ isla()?.autorCorreo }}</p>
             <div class="inline-flex items-center space-x-2">
               <span class="px-3 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary rounded-full text-sm">
-                {{ isla.autorRol }}
+                {{ isla()?.autorRol }}
               </span>
             </div>
           </div>
 
           <!-- Author Stats -->
           <div class="flex-shrink-0 text-center">
-            <div class="text-2xl font-futuristic font-bold text-primary mb-1">{{ isla.autorId }}</div>
+            <div class="text-2xl font-futuristic font-bold text-primary mb-1">{{ isla()?.autorId }}</div>
             <div class="text-sm text-muted-foreground">ID de Autor</div>
           </div>
         </div>
@@ -243,7 +245,7 @@
     <div class="text-center mb-16">
       <h2 class="text-4xl md:text-5xl font-futuristic font-bold mb-6 animate-fade-in">
         <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
-          Características de {{ isla.nombre }}
+          Características de {{ isla()?.nombre }}
         </span>
       </h2>
       <p class="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in">
@@ -321,12 +323,12 @@
         <div class="grid md:grid-cols-2 gap-8 items-center">
           <!-- Overall Rating -->
           <div class="text-center">
-            <div class="text-6xl font-futuristic font-bold text-primary mb-2">{{ calcularPromedioRating() }}</div>
+            <div class="text-6xl font-futuristic font-bold text-primary mb-2">{{ 0 }}</div>
             <div class="text-muted-foreground mb-4">Calificación Promedio</div>
             <div class="flex justify-center space-x-1 mb-2">
               <span class="text-2xl" *ngFor="let star of [1,2,3,4,5]">⭐</span>
             </div>
-            <div class="text-sm text-muted-foreground">Basado en {{ isla.puntuacioneCalificacions.length || 0 }} reseñas</div>
+            <div class="text-sm text-muted-foreground">Basado en {{ isla()?.puntuacioneCalificacions?.length || 0 }} reseñas</div>
           </div>
 
           <!-- Rating Breakdown -->
@@ -334,9 +336,9 @@
             <div class="flex items-center space-x-3" *ngFor="let rating of [5,4,3,2,1]">
               <span class="text-sm text-muted-foreground w-8">{{ rating }}⭐</span>
               <div class="flex-grow bg-[hsl(var(--glass-bg)_/_0.3)] rounded-full h-2">
-                <div class="bg-primary h-2 rounded-full" [style.width.%]="calcularPorcentajeRating(rating)"></div>
+                <div class="bg-primary h-2 rounded-full"></div>
               </div>
-              <span class="text-sm text-muted-foreground w-8">{{ calcularCantidadRating(rating) }}</span>
+              <span class="text-sm text-muted-foreground w-8"></span>
             </div>
           </div>
         </div>
@@ -344,7 +346,7 @@
 
       <!-- Recent Reviews -->
       <div class="space-y-4 animate-fade-in">
-        <div class="glass-card p-6" *ngFor="let review of getRecentReviews()">
+        <div class="glass-card p-6">
           <div class="flex items-start space-x-4">
             <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
               <span class="text-white font-futuristic font-bold">U</span>

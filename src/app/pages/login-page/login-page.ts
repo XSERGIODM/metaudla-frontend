@@ -14,7 +14,7 @@ import {environment} from '@environments/environment';
   templateUrl: './login-page.html',
   styleUrl: './login-page.css'
 })
-export class LoginPage {
+export default class LoginPage {
 
   env= environment;
 

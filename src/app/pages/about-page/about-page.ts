@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {EquipoSeccion} from './equipo-seccion/equipo-seccion';
+import {HeaderContent} from './header-content/header-content';
 
 @Component({
   selector: 'app-about-page',
-  imports: [CommonModule],
+  imports: [CommonModule, EquipoSeccion, HeaderContent, NgOptimizedImage],
   templateUrl: './about-page.html',
   styleUrl: './about-page.css'
 })
-export class AboutPage {
+export default class AboutPage {
 
   /**
    * Método para obtener estadísticas actuales del metaverso

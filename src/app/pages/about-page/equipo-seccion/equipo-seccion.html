@@ -1,0 +1,20 @@
+<div class="container mx-auto px-6">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl md:text-5xl font-futuristic font-bold mb-6 animate-fade-in">
+        <span
+          class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+          Equipo de Desarrollo
+        </span>
+    </h2>
+    <p class="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in">
+      Conoce al equipo visionario detrás de la revolución educativa del metaverso.
+    </p>
+  </div>
+
+  <!-- Team Members -->
+  <div class="flex flex-col md:flex-row justify-center gap-8 max-w-5xl mx-auto">
+    @for (mienbro of listaEquipo; track mienbro){
+      <app-card-equipo [mienbro]="mienbro"></app-card-equipo>
+    }
+  </div>
+</div>

@@ -1,36 +1,3 @@
-<!-- Header Navigation -->
-<header class="relative z-50 backdrop-blur-md bg-[hsl(var(--glass-bg)_/_0.8)] border-b border-[hsl(var(--glass-border))]">
-  <nav class="container mx-auto px-6 py-4">
-    <div class="flex items-center justify-between">
-      <!-- Logo -->
-      <div class="flex items-center space-x-2">
-        <div class="w-10 h-10 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-light))] rounded-lg flex items-center justify-center neon-glow">
-          <span class="text-white font-futuristic font-bold text-lg">M</span>
-        </div>
-        <span class="font-futuristic font-bold text-xl text-primary">MetaUDLA</span>
-      </div>
-
-      <!-- Navigation Links -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="/home" class="text-foreground hover:text-primary transition-colors duration-300 font-medium">Inicio</a>
-        <a href="/islas" class="text-foreground hover:text-primary transition-colors duration-300 font-medium">Explorar Islas</a>
-        <a href="/about" class="text-primary border-b-2 border-primary">Acerca de</a>
-        <a href="#" class="text-foreground hover:text-primary transition-colors duration-300 font-medium">Launcher</a>
-      </div>
-
-      <!-- Auth Buttons -->
-      <div class="flex items-center space-x-4">
-        <button class="glass-card px-4 py-2 text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300">
-          👤 Admin
-        </button>
-        <button class="glass-card px-4 py-2 text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300">
-          🔐 Login
-        </button>
-      </div>
-    </div>
-  </nav>
-</header>
-
 <!-- Hero Section -->
 <main class="relative min-h-screen hero-gradient">
   <!-- Background Effects -->
@@ -38,50 +5,7 @@
   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-light)_/_0.1),hsl(var(--metaverse-crystal)_/_0.05),transparent)]"></div>
 
   <!-- Hero Content -->
-  <div class="relative z-10 container mx-auto px-6 pt-20 pb-16">
-    <div class="text-center max-w-6xl mx-auto">
-      <!-- Hero Title -->
-      <div class="mb-12 animate-fade-in">
-        <h1 class="text-5xl md:text-7xl font-futuristic font-bold mb-6 animate-cinematic-entrance stagger-1">
-          <span class="block text-primary neon-text">Acerca del</span>
-          <span class="block bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--primary-light))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
-            Metaverso UDLA
-          </span>
-        </h1>
-        <p class="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 animate-fade-in stagger-2 leading-relaxed">
-          Una revolución educativa que transforma la manera en que estudiantes y profesores interactúan con el conocimiento a través de experiencias inmersivas en realidad virtual.
-        </p>
-      </div>
-
-      <!-- Mission Statement -->
-      <div class="glass-card p-8 mb-12 animate-fade-in stagger-3 max-w-4xl mx-auto">
-        <h2 class="text-2xl font-futuristic font-bold text-primary mb-4">Nuestra Misión</h2>
-        <p class="text-lg text-muted-foreground leading-relaxed text-center">
-          "Democratizar el acceso a la educación de calidad mediante tecnologías inmersivas, creando experiencias de aprendizaje que trascienden las barreras físicas y geográficas, y preparando a las nuevas generaciones para los desafíos del futuro digital."
-        </p>
-      </div>
-
-      <!-- Quick Stats -->
-      <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto animate-fade-in stagger-4">
-        <div class="glass-card p-6 text-center">
-          <div class="text-3xl font-futuristic font-bold text-primary mb-2">47</div>
-          <div class="text-sm text-muted-foreground">Islas Educativas</div>
-        </div>
-        <div class="glass-card p-6 text-center">
-          <div class="text-3xl font-futuristic font-bold text-primary mb-2">12.5K+</div>
-          <div class="text-sm text-muted-foreground">Usuarios Activos</div>
-        </div>
-        <div class="glass-card p-6 text-center">
-          <div class="text-3xl font-futuristic font-bold text-primary mb-2">156</div>
-          <div class="text-sm text-muted-foreground">En línea ahora</div>
-        </div>
-        <div class="glass-card p-6 text-center">
-          <div class="text-3xl font-futuristic font-bold text-primary mb-2">98%</div>
-          <div class="text-sm text-muted-foreground">Satisfacción</div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-header-content></app-header-content>
 </main>
 
 <!-- What is MetaUDLA Section -->
@@ -92,12 +16,12 @@
       <div class="animate-fade-in stagger-1">
         <h2 class="text-4xl md:text-5xl font-futuristic font-bold mb-6">
           <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
-            ¿Qué es MetaUDLA?
+            ¿Qué es UDLAVerso?
           </span>
         </h2>
         <div class="space-y-6 text-muted-foreground">
           <p class="text-lg leading-relaxed">
-            MetaUDLA es una plataforma educativa revolucionaria que utiliza tecnologías de realidad virtual y metaverso para crear experiencias de aprendizaje inmersivas. Desarrollada por la Universidad de Las Américas, representa el futuro de la educación superior.
+            UDLA-Verso es una plataforma educativa revolucionaria que utiliza tecnologías de realidad virtual y metaverso para crear experiencias de aprendizaje inmersivas. Desarrollada por la Universidad de La Amazonia, representa el futuro de la educación superior.
           </p>
           <p class="text-lg leading-relaxed">
             Cada "isla" en nuestro metaverso es un mundo educativo único, diseñado específicamente para diferentes áreas de conocimiento, desde matemáticas avanzadas hasta ciencias sociales, pasando por arte digital y programación.
@@ -116,10 +40,12 @@
               <!-- MetaUDLA Logo Representation -->
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               <div class="text-white text-center z-10">
-                <div class="text-8xl mb-4 animate-pulse-glow">🎓</div>
-                <h3 class="text-3xl font-futuristic font-bold mb-2">MetaUDLA</h3>
+                <div class="text-8xl mb-4 animate-pulse-glow">
+                  <img ngSrc="/UdlaVerso-logo.webp" width="200" height="200" alt="UDLAVerso Logo">
+                </div>
+                <h3 class="text-3xl font-futuristic font-bold mb-2">UDLAVerso</h3>
                 <p class="text-lg opacity-90">Educación del Futuro</p>
-                <div class="mt-4 text-sm opacity-75">Universidad de Las Américas</div>
+                <div class="mt-4 text-sm opacity-75">Universidad de La Amazonia</div>
               </div>
             </div>
           </div>
@@ -212,7 +138,7 @@
         </span>
       </h2>
       <p class="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in">
-        Descubre las funcionalidades que hacen de MetaUDLA una plataforma educativa única en su clase.
+        Descubre las funcionalidades que hacen de UDLAVerso una plataforma educativa única en su clase.
       </p>
     </div>
 
@@ -275,57 +201,7 @@
 
 <!-- Team Section -->
 <section class="py-20">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-futuristic font-bold mb-6 animate-fade-in">
-        <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
-          Equipo de Desarrollo
-        </span>
-      </h2>
-      <p class="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in">
-        Conoce al equipo visionario detrás de la revolución educativa del metaverso.
-      </p>
-    </div>
-
-    <!-- Team Members -->
-    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      <!-- Team Member 1 -->
-      <div class="glass-card p-8 text-center animate-fade-in stagger-1">
-        <div class="w-24 h-24 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-light))] rounded-full flex items-center justify-center neon-glow mx-auto mb-4">
-          <span class="text-white font-futuristic font-bold text-2xl">AD</span>
-        </div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Administrador del Sistema</h3>
-        <p class="text-muted-foreground mb-4">Director de Proyecto & Desarrollador Principal</p>
-        <p class="text-sm text-muted-foreground leading-relaxed">
-          Líder del proyecto con más de 10 años de experiencia en desarrollo de software educativo y tecnologías inmersivas.
-        </p>
-      </div>
-
-      <!-- Team Member 2 -->
-      <div class="glass-card p-8 text-center animate-fade-in stagger-2">
-        <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center neon-glow mx-auto mb-4">
-          <span class="text-white font-futuristic font-bold text-2xl">VR</span>
-        </div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Especialista VR/AR</h3>
-        <p class="text-muted-foreground mb-4">Ingeniero de Realidad Virtual</p>
-        <p class="text-sm text-muted-foreground leading-relaxed">
-          Experto en desarrollo de experiencias inmersivas y optimización de motores gráficos para aplicaciones educativas.
-        </p>
-      </div>
-
-      <!-- Team Member 3 -->
-      <div class="glass-card p-8 text-center animate-fade-in stagger-3">
-        <div class="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-400 rounded-full flex items-center justify-center neon-glow mx-auto mb-4">
-          <span class="text-white font-futuristic font-bold text-2xl">AI</span>
-        </div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Investigador IA</h3>
-        <p class="text-muted-foreground mb-4">Científico de Datos Educativos</p>
-        <p class="text-sm text-muted-foreground leading-relaxed">
-          Especialista en machine learning aplicado a la educación y desarrollo de sistemas de tutoría inteligente.
-        </p>
-      </div>
-    </div>
-  </div>
+  <app-equipo-seccion></app-equipo-seccion>
 </section>
 
 <!-- Roadmap Section -->
@@ -449,63 +325,3 @@
     </div>
   </div>
 </section>
-
-<!-- Footer -->
-<footer class="backdrop-blur-md bg-[hsl(var(--glass-bg)_/_0.9)] border-t border-[hsl(var(--glass-border))]">
-  <div class="container mx-auto px-6 py-12">
-    <div class="grid md:grid-cols-4 gap-8">
-      <!-- Logo y Descripción -->
-      <div class="md:col-span-1">
-        <div class="flex items-center space-x-2 mb-4">
-          <div class="w-8 h-8 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-light))] rounded-lg flex items-center justify-center">
-            <span class="text-white font-futuristic font-bold">M</span>
-          </div>
-          <span class="font-futuristic font-bold text-primary">MetaUDLA</span>
-        </div>
-        <p class="text-sm text-muted-foreground leading-relaxed">
-          El metaverso educativo del futuro, desarrollado por la Universidad de Las Américas para revolucionar la experiencia de aprendizaje.
-        </p>
-      </div>
-
-      <!-- Enlaces Rápidos -->
-      <div>
-        <h4 class="font-futuristic font-semibold text-primary mb-4">Enlaces Rápidos</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Inicio</a></li>
-          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Explorar Islas</a></li>
-          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Acerca de</a></li>
-          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Soporte</a></li>
-        </ul>
-      </div>
-
-      <!-- Comunidad -->
-      <div>
-        <h4 class="font-futuristic font-semibold text-primary mb-4">Comunidad</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Discord</a></li>
-          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Foros</a></li>
-          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Eventos</a></li>
-          <li><a href="#" class="text-muted-foreground hover:text-primary transition-colors">Blog</a></li>
-        </ul>
-      </div>
-
-      <!-- Conecta -->
-      <div>
-        <h4 class="font-futuristic font-semibold text-primary mb-4">Conecta</h4>
-        <div class="flex space-x-4">
-          <a href="#" class="text-muted-foreground hover:text-primary transition-colors text-xl">🐦</a>
-          <a href="#" class="text-muted-foreground hover:text-primary transition-colors text-xl">📘</a>
-          <a href="#" class="text-muted-foreground hover:text-primary transition-colors text-xl">📺</a>
-          <a href="#" class="text-muted-foreground hover:text-primary transition-colors text-xl">📧</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Copyright -->
-    <div class="border-t border-[hsl(var(--glass-border))] mt-8 pt-8 text-center">
-      <p class="text-sm text-muted-foreground">
-        © 2024 MetaUDLA - Metaverso Educativo. Todos los derechos reservados.
-      </p>
-    </div>
-  </div>
-</footer>

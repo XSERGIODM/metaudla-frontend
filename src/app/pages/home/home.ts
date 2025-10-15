@@ -12,6 +12,6 @@ import {HomeSeccion} from './home-seccion/home-seccion';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
+export default class Home {
   lista= inject(IslaService);
 }
