@@ -1,10 +1,10 @@
-import {Component, computed, inject, Input, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Isla, Etiqueta } from '../../type/Isla';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {IslaService} from '../../service/isla-service';
 import {map, switchMap} from 'rxjs/operators';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {Isla} from '../../type/Isla';
 
 @Component({
   selector: 'app-isla-detalle',
@@ -15,6 +15,11 @@ import {toSignal} from '@angular/core/rxjs-interop';
 export default class IslaDetalle {
 
   islaService = inject(IslaService);
+  endpointRoute = inject(ActivatedRoute);
+
+  islaDetalle () {
+    this.islaService.obtenerIsla(this.endpointRoute.snapshot.params['islaId']);
+  }
 
   isla = toSignal(
     inject(ActivatedRoute)

@@ -6,45 +6,39 @@ export interface Isla {
   videos:                   string[];
   linkDescarga:             string;
   autorId:                  number;
-  autorNombre:              AutorNombre;
-  autorCorreo:              AutorCorreo;
+  autorNombre:              string;
+  autorCorreo:              string;
   autorFotoPerfilUrl:       string;
   autorRol:                 AutorRol;
-  etiquetas:                Etiqueta[];
+  etiquetas:                string[];
   visitas:                  number;
   fechaCreacion:            Date;
   fechaActualizacion:       Date;
   version:                  number;
-  categorias:               any[];
-  favoritoIds:              any[];
+  categorias:               Categoria[];
+  favoritoIds:              number[];
   puntuacioneCalificacions: number[];
   meGustaTipos:             MeGustaTipo[];
   estado:                   Estado;
 }
 
-export enum AutorCorreo {
-  Admin1UdlaEduEc = "admin1@udla.edu.ec",
-}
-
-export enum AutorNombre {
-  AdministradorDelSistema = "Administrador del Sistema",
-}
-
 export enum AutorRol {
   Administrador = "ADMINISTRADOR",
+  Profesor = "PROFESOR"
 }
 
 export enum Estado {
   Habilitado = "HABILITADO",
-}
-
-export enum Etiqueta {
-  Cálculo = "cálculo",
-  Geometría = "geometría",
-  Matemáticas = "matemáticas",
-  Álgebra = "álgebra",
+  Deshabilitado = "DESHABILITADO",
 }
 
 export enum MeGustaTipo {
   MeGusta = "ME_GUSTA",
+  NoMeGusta = "NO_ME_GUSTA",
+}
+
+export interface Categoria {
+  id: number;
+  nombre: string;
+  descripcion: string;
 }
