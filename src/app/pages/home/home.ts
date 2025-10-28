@@ -19,7 +19,7 @@ export default class Home implements OnInit {
   listaTendencia = signal<Isla[]>([]);
 
   obtenerLista(){
-    this.islaService.islasTendencias(1,3).subscribe((lista: Paginacion<Isla>) => {
+    this.islaService.islasTendencias(0,3).subscribe((lista: Paginacion<Isla>) => {
       this.listaTendencia.set(lista.content);
     });
   }
