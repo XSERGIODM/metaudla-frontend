@@ -1,0 +1,274 @@
+<!-- Hero Section - Perfil del Usuario -->
+<main class="relative min-h-screen hero-gradient">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[hsl(var(--bg-gradient-start))] to-[hsl(var(--bg-gradient-end))]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-light)_/_0.1),hsl(var(--metaverse-crystal)_/_0.05),transparent)]"></div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-6 py-20 relative z-10">
+
+    <!-- Header del Perfil -->
+    <div class="max-w-5xl mx-auto mb-12">
+      <div class="glass-card p-8 animate-fade-in">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+
+          <!-- Avatar -->
+          <div class="relative">
+            <div class="w-32 h-32 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-light))] rounded-full flex items-center justify-center neon-glow">
+              <span class="text-5xl font-futuristic font-bold text-white">
+                {{ getInitial() }}
+              </span>
+            </div>
+            <!-- Badge de estado -->
+            @if (usuario()?.estado === 'ACTIVO') {
+              <div class="absolute -bottom-2 -right-2 bg-green-500 rounded-full px-3 py-1 text-xs font-medium text-white shadow-lg">
+                ✓ Activo
+              </div>
+            }
+          </div>
+
+          <!-- Información Principal -->
+          <div class="flex-1 text-center md:text-left">
+            <h1 class="text-4xl font-futuristic font-bold mb-2">
+              <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+                {{ usuario()?.nombre || 'Usuario' }}
+              </span>
+            </h1>
+            <p class="text-xl text-muted-foreground mb-2">&#64;{{ usuario()?.username || 'usuario' }}</p>
+            <p class="text-muted-foreground mb-4">📧 {{ usuario()?.correo || 'email@ejemplo.com' }}</p>
+
+            <!-- Badge de rol -->
+            <div class="inline-flex items-center gap-2">
+              @if (usuario()?.rol === 'ADMINISTRADOR') {
+                <span class="px-4 py-2 bg-red-500/20 text-red-400 rounded-full text-sm font-medium">
+                  👑 Administrador
+                </span>
+              } @else if (usuario()?.rol === 'PROFESOR') {
+                <span class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">
+                  👨‍🏫 Profesor
+                </span>
+              } @else {
+                <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">
+                  🎓 Estudiante
+                </span>
+              }
+              <span class="px-4 py-2 glass-card text-primary text-sm font-medium">
+                Miembro desde {{ formatDate(usuario()?.createdAt) }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Botón de editar perfil (futuro) -->
+          <div class="flex flex-col gap-3">
+            <button class="metaverse-button px-6 py-3 hover:scale-105">
+              ✏️ Editar Perfil
+            </button>
+            <button class="glass-card px-6 py-3 text-muted-foreground hover:text-primary transition-colors">
+              ⚙️ Configuración
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estadísticas -->
+    <section class="max-w-5xl mx-auto mb-12">
+      <h2 class="text-3xl font-futuristic font-bold mb-6 animate-fade-in stagger-1">
+        <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+          📊 Estadísticas
+        </span>
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <!-- Islas Creadas -->
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-1">
+          <div class="text-4xl mb-3">🏝️</div>
+          <div class="text-3xl font-futuristic font-bold text-primary mb-2">
+            {{ usuario()?.islas?.length || 0 }}
+          </div>
+          <div class="text-sm text-muted-foreground">Islas Creadas</div>
+        </div>
+
+        <!-- Favoritos -->
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-2">
+          <div class="text-4xl mb-3">🔖</div>
+          <div class="text-3xl font-futuristic font-bold text-primary mb-2">
+            {{ usuario()?.favoritos?.length || 0 }}
+          </div>
+          <div class="text-sm text-muted-foreground">Favoritos</div>
+        </div>
+
+        <!-- Me Gusta -->
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-3">
+          <div class="text-4xl mb-3">🫶🏼</div>
+          <div class="text-3xl font-futuristic font-bold text-primary mb-2">
+            {{ usuario()?.meGustas?.length || 0 }}
+          </div>
+          <div class="text-sm text-muted-foreground">Me Gusta</div>
+        </div>
+
+        <!-- Puntuaciones -->
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-4">
+          <div class="text-4xl mb-3">⭐</div>
+          <div class="text-3xl font-futuristic font-bold text-primary mb-2">
+            {{ usuario()?.puntuaciones?.length || 0 }}
+          </div>
+          <div class="text-sm text-muted-foreground">Valoraciones</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Información Detallada -->
+    <section class="max-w-5xl mx-auto mb-12">
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Información Personal -->
+        <div class="glass-card p-8 animate-fade-in stagger-1">
+          <h3 class="text-2xl font-futuristic font-bold text-primary mb-6 flex items-center gap-2">
+            <span>👤</span> Información Personal
+          </h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center pb-3 border-b border-[hsl(var(--glass-border))]">
+              <span class="text-muted-foreground">Nombre Completo:</span>
+              <span class="font-medium text-foreground">{{ usuario()?.nombre || 'N/A' }}</span>
+            </div>
+            <div class="flex justify-between items-center pb-3 border-b border-[hsl(var(--glass-border))]">
+              <span class="text-muted-foreground">Usuario:</span>
+              <span class="font-medium text-foreground">&#64;{{ usuario()?.username || 'N/A' }}</span>
+            </div>
+            <div class="flex justify-between items-center pb-3 border-b border-[hsl(var(--glass-border))]">
+              <span class="text-muted-foreground">Correo:</span>
+              <span class="font-medium text-foreground">{{ usuario()?.correo || 'N/A' }}</span>
+            </div>
+            <div class="flex justify-between items-center pb-3 border-b border-[hsl(var(--glass-border))]">
+              <span class="text-muted-foreground">Rol:</span>
+              <span class="font-medium text-foreground">{{ usuario()?.rol || 'N/A' }}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-muted-foreground">Estado:</span>
+              @if (usuario()?.estado === 'ACTIVO') {
+                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">
+                  Activo
+                </span>
+              } @else {
+                <span class="px-3 py-1 bg-gray-500/20 text-gray-400 rounded-full text-sm font-medium">
+                  {{ usuario()?.estado || 'Desconocido' }}
+                </span>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Actividad Reciente -->
+        <div class="glass-card p-8 animate-fade-in stagger-2">
+          <h3 class="text-2xl font-futuristic font-bold text-primary mb-6 flex items-center gap-2">
+            <span>📈</span> Actividad Reciente
+          </h3>
+          <div class="space-y-4">
+
+            @if (usuario()?.islas && usuario()!.islas.length > 0) {
+              <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
+                <div class="text-2xl">🏝️</div>
+                <div>
+                  <p class="text-foreground font-medium">Has creado {{ usuario()!.islas.length }} isla(s)</p>
+                  <p class="text-sm text-muted-foreground">Contribuyendo al metaverso educativo</p>
+                </div>
+              </div>
+            }
+
+            @if (usuario()?.favoritos && usuario()!.favoritos.length > 0) {
+              <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
+                <div class="text-2xl">🔖</div>
+                <div>
+                  <p class="text-foreground font-medium">{{ usuario()!.favoritos.length }} isla(s) en favoritos</p>
+                  <p class="text-sm text-muted-foreground">Islas que te interesan</p>
+                </div>
+              </div>
+            }
+
+            @if (usuario()?.meGustas && usuario()!.meGustas.length > 0) {
+              <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
+                <div class="text-2xl">🫶🏼</div>
+                <div>
+                  <p class="text-foreground font-medium">Has dado {{ usuario()!.meGustas.length }} me gusta</p>
+                  <p class="text-sm text-muted-foreground">Apoyando contenido de calidad</p>
+                </div>
+              </div>
+            }
+
+            @if (usuario()?.puntuaciones && usuario()!.puntuaciones.length > 0) {
+              <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
+                <div class="text-2xl">⭐</div>
+                <div>
+                  <p class="text-foreground font-medium">{{ usuario()!.puntuaciones.length }} valoraciones realizadas</p>
+                  <p class="text-sm text-muted-foreground">Ayudando a mejorar las islas</p>
+                </div>
+              </div>
+            }
+
+            @if (!usuario()?.islas?.length && !usuario()?.favoritos?.length && !usuario()?.meGustas?.length && !usuario()?.puntuaciones?.length) {
+              <div class="text-center py-8">
+                <div class="text-5xl mb-4 opacity-50">🌊</div>
+                <p class="text-muted-foreground">Aún no hay actividad reciente</p>
+                <p class="text-sm text-muted-foreground mt-2">¡Comienza a explorar islas!</p>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acciones Rápidas -->
+    <section class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-futuristic font-bold mb-6 animate-fade-in">
+        <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+          🚀 Acciones Rápidas
+        </span>
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Explorar Islas -->
+        <a routerLink="/islas" class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in stagger-1">
+          <div class="text-4xl mb-3">🗺️</div>
+          <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Explorar Islas</h3>
+          <p class="text-sm text-muted-foreground mb-4">Descubre nuevas experiencias educativas</p>
+          <div class="metaverse-button inline-block px-4 py-2 text-sm">
+            Explorar →
+          </div>
+        </a>
+
+        <!-- Mis Favoritos -->
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in stagger-2">
+          <div class="text-4xl mb-3">⭐</div>
+          <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Mis Favoritos</h3>
+          <p class="text-sm text-muted-foreground mb-4">Accede rápido a tus islas favoritas</p>
+          <div class="metaverse-button inline-block px-4 py-2 text-sm">
+            Ver Favoritos →
+          </div>
+        </div>
+
+        <!-- Dashboard -->
+        @if (usuario()?.rol === 'ADMINISTRADOR' || usuario()?.rol === 'PROFESOR') {
+          <a [routerLink]="getDashboardRoute()" class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in stagger-3">
+            <div class="text-4xl mb-3">📊</div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Mi Dashboard</h3>
+            <p class="text-sm text-muted-foreground mb-4">Gestiona tu contenido y estadísticas</p>
+            <div class="metaverse-button inline-block px-4 py-2 text-sm">
+              Ir al Dashboard →
+            </div>
+          </a>
+        } @else {
+          <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in stagger-3">
+            <div class="text-4xl mb-3">🎓</div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Mi Progreso</h3>
+            <p class="text-sm text-muted-foreground mb-4">Revisa tu avance educativo</p>
+            <div class="metaverse-button inline-block px-4 py-2 text-sm">
+              Ver Progreso →
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+  </div>
+</main>

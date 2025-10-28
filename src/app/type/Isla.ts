@@ -22,6 +22,18 @@ export interface Isla {
   estado:                   Estado;
 }
 
+export interface IslaDtoCreate {
+  nombre: string;
+  descripcion: string;
+  imagenes: string[];
+  videos: string[];
+  linkDescarga: string;
+  autorId: number;
+  etiquetas: string[];
+  categoriaIds: number[];
+}
+
+
 export enum AutorRol {
   Administrador = "ADMINISTRADOR",
   Profesor = "PROFESOR"

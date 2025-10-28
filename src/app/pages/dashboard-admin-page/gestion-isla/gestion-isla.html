@@ -1,0 +1,141 @@
+
+  <div class="glass-card p-8 animate-fade-in stagger-1">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-2xl font-futuristic font-bold text-primary flex items-center gap-2">
+        <span>🏝️</span> Gestión de Islas
+      </h3>
+      <button class="metaverse-button px-4 py-2 text-sm hover:scale-105">
+        ➕ Nueva Isla
+      </button>
+    </div>
+
+    <!-- Filtros de Islas -->
+    <div class="flex flex-wrap gap-4 mb-6">
+      <select class="glass-card px-4 py-2 text-sm">
+        <option>Todas las categorías</option>
+        <option>Matemáticas</option>
+        <option>Ciencias</option>
+        <option>Programación</option>
+      </select>
+      <select class="glass-card px-4 py-2 text-sm">
+        <option>Todos los estados</option>
+        <option>Habilitadas</option>
+        <option>Deshabilitadas</option>
+        <option>Pendientes</option>
+      </select>
+      <input type="text" placeholder="Buscar isla..." class="glass-card px-4 py-2 text-sm flex-1">
+    </div>
+
+    <!-- Tabla de Islas -->
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead>
+        <tr class="border-b border-[hsl(var(--glass-border))]">
+          <th class="text-left py-3 px-2 font-futuristic text-primary">Isla</th>
+          <th class="text-left py-3 px-2 font-futuristic text-primary">Categoría</th>
+          <th class="text-left py-3 px-2 font-futuristic text-primary">Creador</th>
+          <th class="text-left py-3 px-2 font-futuristic text-primary">Estado</th>
+          <th class="text-left py-3 px-2 font-futuristic text-primary">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          class="border-b border-[hsl(var(--glass-border))]/50 hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
+          <td class="py-4 px-2">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
+                A
+              </div>
+              <div>
+                <div class="font-medium">Álgebra Lineal Avanzada</div>
+                <div class="text-sm text-muted-foreground">Creada hace 2 días</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-4 px-2">
+            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">Matemáticas</span>
+          </td>
+          <td class="py-4 px-2 text-sm text-muted-foreground">María García</td>
+          <td class="py-4 px-2">
+            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Habilitada</span>
+          </td>
+          <td class="py-4 px-2">
+            <div class="flex gap-2">
+              <button class="glass-card px-2 py-1 text-xs hover:bg-primary/10">✏️</button>
+              <button class="glass-card px-2 py-1 text-xs hover:bg-red-500/10 text-red-400">🚫</button>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="border-b border-[hsl(var(--glass-border))]/50 hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
+          <td class="py-4 px-2">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
+                B
+              </div>
+              <div>
+                <div class="font-medium">Biología Molecular</div>
+                <div class="text-sm text-muted-foreground">Creada hace 5 días</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-4 px-2">
+            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Ciencias</span>
+          </td>
+          <td class="py-4 px-2 text-sm text-muted-foreground">Carlos Rodríguez</td>
+          <td class="py-4 px-2">
+            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Habilitada</span>
+          </td>
+          <td class="py-4 px-2">
+            <div class="flex gap-2">
+              <button class="glass-card px-2 py-1 text-xs hover:bg-primary/10">✏️</button>
+              <button class="glass-card px-2 py-1 text-xs hover:bg-red-500/10 text-red-400">🚫</button>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="border-b border-[hsl(var(--glass-border))]/50 hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
+          <td class="py-4 px-2">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
+                J
+              </div>
+              <div>
+                <div class="font-medium">JavaScript Avanzado</div>
+                <div class="text-sm text-muted-foreground">Creada hace 1 semana</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-4 px-2">
+            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Programación</span>
+          </td>
+          <td class="py-4 px-2 text-sm text-muted-foreground">Ana López</td>
+          <td class="py-4 px-2">
+            <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-xs">Pendiente</span>
+          </td>
+          <td class="py-4 px-2">
+            <div class="flex gap-2">
+              <button class="glass-card px-2 py-1 text-xs hover:bg-primary/10">✏️</button>
+              <button class="glass-card px-2 py-1 text-xs hover:bg-red-500/10 text-red-400">🚫</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Paginación -->
+    <div class="flex justify-between items-center mt-6">
+      <div class="text-sm text-muted-foreground">Mostrando 1-3 de 47 islas</div>
+      <div class="flex gap-2">
+        <button class="glass-card px-3 py-1 text-sm hover:bg-primary/10">← Anterior</button>
+        <button class="glass-card px-3 py-1 text-sm bg-primary/20">1</button>
+        <button class="glass-card px-3 py-1 text-sm hover:bg-primary/10">2</button>
+        <button class="glass-card px-3 py-1 text-sm hover:bg-primary/10">3</button>
+        <button class="glass-card px-3 py-1 text-sm hover:bg-primary/10">Siguiente →</button>
+      </div>
+    </div>
+  </div>

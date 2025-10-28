@@ -1,1 +1,90 @@
-<p>dashboard-admin-page works!</p>
+<!-- Dashboard Administrativo - UDLAVerso -->
+<main class="relative min-h-screen hero-gradient">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[hsl(var(--bg-gradient-start))] to-[hsl(var(--bg-gradient-end))]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-light)_/_0.1),hsl(var(--metaverse-crystal)_/_0.05),transparent)]"></div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-6 py-20 relative z-10">
+
+    <!-- Header Section -->
+    <app-header-seccion></app-header-seccion>
+
+    <!-- Estadísticas Globales -->
+    <app-estadistica-globales></app-estadistica-globales>
+
+    <!-- Panel de Control Principal -->
+    <section class="max-w-7xl mx-auto mb-12">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+
+        </div>
+        <!-- Panel Lateral -->
+        <div class="space-y-8">
+
+          <!-- Sistema y Configuración -->
+          <div class="glass-card p-6 animate-fade-in stagger-4">
+            <h3 class="text-xl font-futuristic font-bold text-primary mb-4 flex items-center gap-2">
+              <span>⚙️</span> Sistema
+            </h3>
+
+            <div class="space-y-4">
+              <button class="w-full glass-card p-3 text-left hover:bg-primary/10 transition-colors">
+                🙎‍♂️ Usuarios
+              </button>
+              <button class="w-full glass-card p-3 text-left hover:bg-primary/10 transition-colors">
+                🏝️ Islas
+              </button>
+              <button class="w-full glass-card p-3 text-left hover:bg-primary/10 transition-colors">
+                🏷️ Categoria
+              </button>
+              <button class="w-full glass-card p-3 text-left hover:bg-primary/10 transition-colors">
+                📋 Logs del Sistema
+              </button>
+            </div>
+          </div>
+
+          <!-- Alertas y Notificaciones -->
+          <div class="glass-card p-6 animate-fade-in stagger-5">
+            <h3 class="text-xl font-futuristic font-bold text-primary mb-4 flex items-center gap-2">
+              <span>🚨</span> Alertas
+            </h3>
+
+            <div class="space-y-3">
+              <div class="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+                <div class="flex items-start gap-2">
+                  <span class="text-yellow-400">⚠️</span>
+                  <div>
+                    <div class="text-sm font-medium text-yellow-400">5 islas pendientes de revisión</div>
+                    <div class="text-xs text-muted-foreground">Revisar contenido nuevo</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                <div class="flex items-start gap-2">
+                  <span class="text-red-400">🚫</span>
+                  <div>
+                    <div class="text-sm font-medium text-red-400">2 reportes de abuso</div>
+                    <div class="text-xs text-muted-foreground">Requieren atención inmediata</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg">
+                <div class="flex items-start gap-2">
+                  <span class="text-blue-400">📈</span>
+                  <div>
+                    <div class="text-sm font-medium text-blue-400">Nuevo récord de usuarios</div>
+                    <div class="text-xs text-muted-foreground">12,500 usuarios registrados</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>

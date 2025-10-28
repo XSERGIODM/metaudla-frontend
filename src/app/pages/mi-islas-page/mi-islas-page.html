@@ -1,0 +1,455 @@
+<!-- Hero Section - Mis Islas -->
+<main class="relative min-h-screen hero-gradient">
+  <!-- Background Effects -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[hsl(var(--bg-gradient-start))] to-[hsl(var(--bg-gradient-end))]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-light)_/_0.1),hsl(var(--metaverse-crystal)_/_0.05),transparent)]"></div>
+
+  <!-- Content -->
+  <div class="container mx-auto px-6 py-20 relative z-10">
+
+    <!-- Header Section -->
+    <div class="max-w-7xl mx-auto mb-12">
+      <div class="glass-card p-8 animate-fade-in">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+
+          <!-- Título y Descripción -->
+          <div>
+            <h1 class="text-4xl md:text-5xl font-futuristic font-bold mb-4">
+              <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+                🏝️ Mis Islas
+              </span>
+            </h1>
+            <p class="text-lg text-muted-foreground max-w-2xl">
+              Gestiona tus islas educativas. Crea, edita y administra el contenido que compartes con la comunidad UDLAVerso.
+            </p>
+          </div>
+
+          <!-- Botón Crear Nueva Isla -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="metaverse-button px-6 py-3 hover:scale-105">
+              ✨ Crear Nueva Isla
+            </button>
+            <button class="glass-card px-6 py-3 text-muted-foreground hover:text-primary transition-colors">
+              🔄 Recargar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtros Section -->
+    <div class="max-w-7xl mx-auto mb-8">
+      <div class="glass-card p-6 animate-fade-in stagger-1">
+        <div class="flex flex-col md:flex-row gap-4 items-start md:items-center">
+
+          <!-- Buscador -->
+          <div class="flex-1">
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">🔍 Buscar Islas</label>
+            <input type="text"
+                   placeholder="Buscar por nombre o etiquetas..."
+                   class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+          </div>
+
+          <!-- Filtro por Estado -->
+          <div class="w-full md:w-auto">
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">📊 Estado</label>
+            <select class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+              <option value="">Todos</option>
+              <option value="HABILITADO">Habilitadas</option>
+              <option value="DESHABILITADO">Deshabilitadas</option>
+            </select>
+          </div>
+
+          <!-- Filtro por Categoría -->
+          <div class="w-full md:w-auto">
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">🏷️ Categoría</label>
+            <select class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+              <option value="">Todas</option>
+              <option value="Matemáticas">Matemáticas</option>
+              <option value="Ciencias">Ciencias</option>
+              <option value="Programación">Programación</option>
+              <option value="Arte">Arte</option>
+            </select>
+          </div>
+
+          <!-- Limpiar Filtros -->
+          <div class="w-full md:w-auto">
+            <button class="w-full metaverse-button px-4 py-2 text-sm hover:scale-105">
+              🧹 Limpiar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estadísticas Rápidas -->
+    <div class="max-w-7xl mx-auto mb-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-1">
+          <div class="text-3xl mb-2">🏝️</div>
+          <div class="text-2xl font-futuristic font-bold text-primary mb-1">5</div>
+          <div class="text-sm text-muted-foreground">Total Islas</div>
+        </div>
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-2">
+          <div class="text-3xl mb-2">✅</div>
+          <div class="text-2xl font-futuristic font-bold text-green-400 mb-1">4</div>
+          <div class="text-sm text-muted-foreground">Habilitadas</div>
+        </div>
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-3">
+          <div class="text-3xl mb-2">🚫</div>
+          <div class="text-2xl font-futuristic font-bold text-red-400 mb-1">1</div>
+          <div class="text-sm text-muted-foreground">Deshabilitadas</div>
+        </div>
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-4">
+          <div class="text-3xl mb-2">⭐</div>
+          <div class="text-2xl font-futuristic font-bold text-primary mb-1">1,250</div>
+          <div class="text-sm text-muted-foreground">Total Visitas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid de Islas -->
+    <div class="max-w-7xl mx-auto">
+      @if (false) {
+        <!-- Estado Vacío -->
+        <div class="glass-card p-12 text-center animate-fade-in">
+          <div class="text-6xl mb-6 opacity-50">🌊</div>
+          <h3 class="text-2xl font-futuristic font-bold text-primary mb-4">No tienes islas aún</h3>
+          <p class="text-muted-foreground mb-6 max-w-md mx-auto">
+            Comienza creando tu primera isla educativa. Comparte conocimiento con la comunidad UDLAVerso.
+          </p>
+          <button class="metaverse-button px-8 py-3 hover:scale-105">
+            ✨ Crear Mi Primera Isla
+          </button>
+        </div>
+      } @else {
+        <!-- Grid de Islas -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Isla 1 -->
+          <div class="island-card animate-fade-in" [class.stagger-1]="true">
+
+            <!-- Imagen de la Isla -->
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div class="h-48 bg-gradient-to-br from-purple-400 to-blue-600 flex items-center justify-center relative">
+                <div class="text-white text-center">
+                  <div class="text-4xl mb-2">🏝️</div>
+                  <div class="font-futuristic font-bold">Matemáticas Avanzadas</div>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+
+              <!-- Badges -->
+              <div class="absolute top-4 left-4 flex flex-col gap-2 z-20">
+                <span class="glass-card px-2 py-1 text-xs font-medium text-green-400">✅ Habilitada</span>
+              </div>
+              <div class="absolute top-4 right-4 z-20">
+                <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-primary">👁️ 150</span>
+              </div>
+            </div>
+
+            <!-- Información de la Isla -->
+            <div class="space-y-4">
+              <div>
+                <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Matemáticas Avanzadas</h3>
+                <p class="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                  Isla dedicada al estudio de cálculo diferencial, álgebra lineal y geometría analítica para estudiantes avanzados.
+                </p>
+              </div>
+
+              <!-- Etiquetas -->
+              <div class="flex flex-wrap gap-1">
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">matemáticas</span>
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">cálculo</span>
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">álgebra</span>
+              </div>
+
+              <!-- Estadísticas -->
+              <div class="flex justify-between items-center text-sm text-muted-foreground">
+                <span>🫶🏼 25</span>
+                <span>🔖 12 Favoritos</span>
+                <span>⭐ 4.5/5.0</span>
+              </div>
+
+              <!-- Fechas -->
+              <div class="text-xs text-muted-foreground">
+                <div>Creada: 15/10/2024</div>
+                <div>Actualizada: 20/10/2024</div>
+              </div>
+
+              <!-- Acciones -->
+              <div class="flex gap-2 pt-4 border-t border-[hsl(var(--glass-border))]">
+                <a class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+                  🚀 Ver Isla
+                </a>
+                <button class="glass-card px-3 py-2 text-primary hover:bg-primary/10 transition-colors">
+                  ✏️
+                </button>
+                <button class="glass-card px-3 py-2 text-red-400 hover:bg-red-500/10 transition-colors">
+                  🗑️
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Isla 2 -->
+          <div class="island-card animate-fade-in" [class.stagger-1]="true">
+
+            <!-- Imagen de la Isla -->
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div class="h-48 bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center relative">
+                <div class="text-white text-center">
+                  <div class="text-4xl mb-2">🧬</div>
+                  <div class="font-futuristic font-bold">Biología Molecular</div>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+
+              <!-- Badges -->
+              <div class="absolute top-4 left-4 flex flex-col gap-2 z-20">
+                <span class="glass-card px-2 py-1 text-xs font-medium text-green-400">✅ Habilitada</span>
+              </div>
+              <div class="absolute top-4 right-4 z-20">
+                <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-primary">👁️ 89</span>
+              </div>
+            </div>
+
+            <!-- Información de la Isla -->
+            <div class="space-y-4">
+              <div>
+                <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Biología Molecular</h3>
+                <p class="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                  Explora los fundamentos de la biología molecular, ADN, ARN y procesos celulares básicos.
+                </p>
+              </div>
+
+              <!-- Etiquetas -->
+              <div class="flex flex-wrap gap-1">
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">biología</span>
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">molecular</span>
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">ADN</span>
+              </div>
+
+              <!-- Estadísticas -->
+              <div class="flex justify-between items-center text-sm text-muted-foreground">
+                <span>🫶🏼 18</span>
+                <span>🔖 8 Favoritos</span>
+                <span>⭐ 4.2/5.0</span>
+              </div>
+
+              <!-- Fechas -->
+              <div class="text-xs text-muted-foreground">
+                <div>Creada: 12/10/2024</div>
+                <div>Actualizada: 18/10/2024</div>
+              </div>
+
+              <!-- Acciones -->
+              <div class="flex gap-2 pt-4 border-t border-[hsl(var(--glass-border))]">
+                <a class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+                  🚀 Ver Isla
+                </a>
+                <button class="glass-card px-3 py-2 text-primary hover:bg-primary/10 transition-colors">
+                  ✏️
+                </button>
+                <button class="glass-card px-3 py-2 text-red-400 hover:bg-red-500/10 transition-colors">
+                  🗑️
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Isla 3 -->
+          <div class="island-card animate-fade-in" [class.stagger-1]="true">
+
+            <!-- Imagen de la Isla -->
+            <div class="relative overflow-hidden rounded-xl mb-4">
+              <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center relative">
+                <div class="text-white text-center">
+                  <div class="text-4xl mb-2">💻</div>
+                  <div class="font-futuristic font-bold">Programación Web</div>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+
+              <!-- Badges -->
+              <div class="absolute top-4 left-4 flex flex-col gap-2 z-20">
+                <span class="glass-card px-2 py-1 text-xs font-medium text-red-400">🚫 Deshabilitada</span>
+              </div>
+              <div class="absolute top-4 right-4 z-20">
+                <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-primary">👁️ 45</span>
+              </div>
+            </div>
+
+            <!-- Información de la Isla -->
+            <div class="space-y-4">
+              <div>
+                <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Programación Web</h3>
+                <p class="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                  Aprende desarrollo web moderno con HTML, CSS, JavaScript y frameworks populares.
+                </p>
+              </div>
+
+              <!-- Etiquetas -->
+              <div class="flex flex-wrap gap-1">
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">web</span>
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">javascript</span>
+                <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">html</span>
+              </div>
+
+              <!-- Estadísticas -->
+              <div class="flex justify-between items-center text-sm text-muted-foreground">
+                <span>🫶🏼 12</span>
+                <span>🔖 5 Favoritos</span>
+                <span>⭐ 3.8/5.0</span>
+              </div>
+
+              <!-- Fechas -->
+              <div class="text-xs text-muted-foreground">
+                <div>Creada: 10/10/2024</div>
+                <div>Actualizada: 15/10/2024</div>
+              </div>
+
+              <!-- Acciones -->
+              <div class="flex gap-2 pt-4 border-t border-[hsl(var(--glass-border))]">
+                <a class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center">
+                  🚀 Ver Isla
+                </a>
+                <button class="glass-card px-3 py-2 text-primary hover:bg-primary/10 transition-colors">
+                  ✏️
+                </button>
+                <button class="glass-card px-3 py-2 text-red-400 hover:bg-red-500/10 transition-colors">
+                  🗑️
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</main>
+
+<!-- Modal para Crear/Editar Isla -->
+<!--<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+  <div class="glass-card p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+
+    &lt;!&ndash; Header del Modal &ndash;&gt;
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-futuristic font-bold text-primary">
+        ✨ Crear Nueva Isla
+      </h2>
+      <button class="text-muted-foreground hover:text-primary text-2xl">
+        ✕
+      </button>
+    </div>
+
+    &lt;!&ndash; Formulario &ndash;&gt;
+    <form>
+      <div class="space-y-6">
+
+        &lt;!&ndash; Nombre &ndash;&gt;
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Nombre de la Isla *</label>
+          <input type="text"
+                 placeholder="Ej: Matemáticas Avanzadas"
+                 class="w-full px-4 py-3 bg-[hsl(var(&#45;&#45;glass-bg)_/_0.5)] border border-[hsl(var(&#45;&#45;glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+        </div>
+
+        &lt;!&ndash; Descripción &ndash;&gt;
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Descripción *</label>
+          <textarea rows="4"
+                    placeholder="Describe el contenido y objetivos de aprendizaje de esta isla..."
+                    class="w-full px-4 py-3 bg-[hsl(var(&#45;&#45;glass-bg)_/_0.5)] border border-[hsl(var(&#45;&#45;glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"></textarea>
+        </div>
+
+        &lt;!&ndash; Imágenes &ndash;&gt;
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Imágenes (URLs)</label>
+          <textarea placeholder="Una URL por línea (http://...)"
+                    rows="3"
+                    class="w-full px-4 py-3 bg-[hsl(var(&#45;&#45;glass-bg)_/_0.5)] border border-[hsl(var(&#45;&#45;glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"></textarea>
+        </div>
+
+        &lt;!&ndash; Videos &ndash;&gt;
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Videos (URLs)</label>
+          <textarea placeholder="Una URL por línea (http://...)"
+                    rows="3"
+                    class="w-full px-4 py-3 bg-[hsl(var(&#45;&#45;glass-bg)_/_0.5)] border border-[hsl(var(&#45;&#45;glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"></textarea>
+        </div>
+
+        &lt;!&ndash; Link de Descarga &ndash;&gt;
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Link de Descarga</label>
+          <input type="url"
+                 placeholder="https://ejemplo.com/descarga"
+                 class="w-full px-4 py-3 bg-[hsl(var(&#45;&#45;glass-bg)_/_0.5)] border border-[hsl(var(&#45;&#45;glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+        </div>
+
+        &lt;!&ndash; Etiquetas &ndash;&gt;
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Etiquetas</label>
+          <input type="text"
+                 placeholder="matemáticas, cálculo, avanzado (separadas por comas)"
+                 class="w-full px-4 py-3 bg-[hsl(var(&#45;&#45;glass-bg)_/_0.5)] border border-[hsl(var(&#45;&#45;glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+        </div>
+
+        &lt;!&ndash; Categorías &ndash;&gt;
+        <div>
+          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Categorías</label>
+          <div class="grid grid-cols-2 gap-2 max-h-32 overflow-y-auto">
+            <label class="flex items-center gap-2 p-2 glass-card rounded-lg cursor-pointer hover:bg-primary/10">
+              <input type="checkbox" class="text-primary focus:ring-primary">
+              <span class="text-sm">Matemáticas</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 glass-card rounded-lg cursor-pointer hover:bg-primary/10">
+              <input type="checkbox" class="text-primary focus:ring-primary">
+              <span class="text-sm">Ciencias</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 glass-card rounded-lg cursor-pointer hover:bg-primary/10">
+              <input type="checkbox" class="text-primary focus:ring-primary">
+              <span class="text-sm">Programación</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 glass-card rounded-lg cursor-pointer hover:bg-primary/10">
+              <input type="checkbox" class="text-primary focus:ring-primary">
+              <span class="text-sm">Arte</span>
+            </label>
+          </div>
+        </div>
+
+        &lt;!&ndash; Botones del Modal &ndash;&gt;
+        <div class="flex gap-4 pt-6 border-t border-[hsl(var(&#45;&#45;glass-border))]">
+          <button class="flex-1 metaverse-button py-3 hover:scale-105">
+            ✨ Crear Isla
+          </button>
+          <button class="glass-card px-6 py-3 text-muted-foreground hover:text-primary transition-colors">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>-->
+
+<!-- Modal de Confirmación para Eliminar -->
+<!--<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+  <div class="glass-card p-8 max-w-md w-full">
+    <div class="text-center">
+      <div class="text-5xl mb-4">⚠️</div>
+      <h3 class="text-xl font-futuristic font-bold text-primary mb-4">¿Eliminar Isla?</h3>
+      <p class="text-muted-foreground mb-6">
+        Esta acción no se puede deshacer. Se eliminará permanentemente la isla
+        "<strong>Matemáticas Avanzadas</strong>" y todo su contenido.
+      </p>
+      <div class="flex gap-4">
+        <button class="flex-1 bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-medium transition-colors">
+          🗑️ Eliminar
+        </button>
+        <button class="flex-1 glass-card py-3 text-muted-foreground hover:text-primary transition-colors">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>-->

@@ -5,7 +5,7 @@
       <a
         [routerLink]="menuOptions.at(0)?.ruta"
         class="flex items-center space-x-2">
-          <img [src]="env.LOGO_APLICACION" alt="Logo" class="w-10 h-auto" >
+        <img [src]="env.LOGO_APLICACION" alt="Logo" class="w-10 h-auto" >
         <span class="font-futuristic font-bold text-xl text-primary">{{env.NOMBRE_APLICACION}}</span>
       </a>
 
@@ -21,15 +21,49 @@
         }
       </div>
 
-      <!-- Auth Buttons -->
+      <!-- Auth Buttons - Mostrar según estado de autenticación -->
       <div class="flex items-center space-x-4">
-        @for (item of menuOptionsButton; track item) {
+        @if (!authService.isAuthenticated()) {
+          <!-- Usuario NO autenticado - Mostrar Login -->
           <a
-            [routerLink]="item.ruta"
+            routerLink="/login"
             routerLinkActive="border-b-2 border-primary"
             class="glass-card px-4 py-2 text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300">
-            {{ item.titulo}}
+            🔐 Login
           </a>
+        } @else {
+          <!-- Dentro del @else del usuario autenticado -->
+          <div class="relative group">
+            <button class="glass-card px-4 py-2 text-sm font-medium text-primary flex items-center space-x-2">
+              <span>{{ authService.currentUser()?.nombre }}</span>
+              <span>▼</span>
+            </button>
+          <!-- Dropdown menu -->
+          <div class="absolute right-0 mt-0 w-48 glass-card hidden group-hover:block">
+            <!-- Mis Islas - Para Profesores y Admins -->
+            @if (authService.currentUser()?.rol === 'PROFESOR' || authService.currentUser()?.rol === 'ADMINISTRADOR') {
+              <a routerLink="/mis-islas" class="block px-4 py-2 hover:bg-primary/10">
+                🏝️ Mis Islas
+              </a>
+            }
+
+            <!-- Dashboard Admin - Solo para Admins -->
+            @if (authService.currentUser()?.rol === 'ADMINISTRADOR') {
+              <a routerLink="/dashboard-admin" class="block px-4 py-2 hover:bg-primary/10">
+                📊 Dashboard Admin
+              </a>
+            }
+
+            <!-- Perfil - Para todos los usuarios logueados -->
+            <a routerLink="/perfil" class="block px-4 py-2 hover:bg-primary/10">
+              👤 Mi Perfil
+            </a>
+
+            <button (click)="logout()" class="w-full text-left px-4 py-2 hover:bg-red-500/10 text-red-500">
+              🚪 Cerrar Sesión
+            </button>
+          </div>
+        </div>
         }
       </div>
     </div>

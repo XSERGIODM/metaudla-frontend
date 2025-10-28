@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {environment} from '@environments/environment';
+import {AuthService} from '../../service/auth-service';
 
 
 interface MenuOption{
@@ -23,27 +24,36 @@ interface MenuOptionButton{
   styleUrl: './header.css'
 })
 export class Header {
+  authService = inject(AuthService);
+  env = environment;
 
-  env= environment;
-
-  menuOptions:MenuOption[] = [
+  menuOptions: MenuOption[] = [
     {
-      titulo:'Inicio',
-      ruta:'/home',
+      titulo: 'Inicio',
+      ruta: '/home',
     },
     {
-      titulo:'Explorar Islas',
-      ruta:'/islas',
+      titulo: 'Explorar Islas',
+      ruta: '/islas',
     },
     {
-      titulo:'Acerca de',
-      ruta:'/about',
+      titulo: 'Acerca de',
+      ruta: '/about',
     },
   ]
-  menuOptionsButton:MenuOptionButton[] = [
-    {
-      titulo:'🔐 Login',
-      ruta:'/login',
+
+  getDashboardRoute(): string {
+    const user = this.authService.currentUser();
+    if (user?.rol === 'ADMINISTRADOR') {
+      return '/dashboard-admin'; // O podrías devolver '/mis-islas' si quieres un default
+    } else if (user?.rol === 'PROFESOR') {
+      return '/mis-islas';
+    } else {
+      return '/'; // Para estudiantes u otros roles
     }
-  ]
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 }
