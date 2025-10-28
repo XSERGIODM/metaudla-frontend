@@ -13,10 +13,12 @@ export interface LoginResponseType {
 }
 
 export interface UsuarioCreateType {
+  id?: number;
   nombre: string;
   username: string;
   correo: string;
   contrasena: string;
+  rol?: string;
 }
 
 

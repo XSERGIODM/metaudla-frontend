@@ -3,7 +3,7 @@
       <h3 class="text-2xl font-futuristic font-bold text-primary flex items-center gap-2">
         <span>👥</span> Gestión de Usuarios
       </h3>
-      <button class="metaverse-button px-4 py-2 text-sm hover:scale-105">
+      <button (click)="abrirModal()" class="metaverse-button px-4 py-2 text-sm hover:scale-105">
         ➕ Nuevo Usuario
       </button>
     </div>
@@ -38,75 +38,81 @@
         </tr>
         </thead>
         <tbody>
-        <tr
-          class="border-b border-[hsl(var(--glass-border))]/50 hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
-          <td class="py-4 px-2">
-            <div class="flex items-center gap-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
-                J
+        @for(usuario of usuarios().content; track usuario.id){
+          <tr
+            class="border-b border-[hsl(var(--glass-border))]/50 hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
+            <td class="py-4 px-2">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-8 h-8 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  {{usuario.nombre.charAt(0)}}
+                </div>
+                <div>
+                  <div class="font-medium">{{usuario.correo}}</div>
+                  <div class="text-sm text-muted-foreground">{{usuario.nombre}}</div>
+                </div>
               </div>
-              <div>
-                <div class="font-medium">juan.perez&#64;udla.edu.co</div>
-                <div class="text-sm text-muted-foreground">Juan Pérez</div>
+            </td>
+            <td class="py-4 px-2">
+              <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">{{usuario.rol}}</span>
+            </td>
+            <td class="py-4 px-2">
+              @if (usuario.estado === 'HABILITADO'){
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">{{usuario.estado}}</span>
+              } @else {
+                <span class="px-2 py-1 bg-red-500/20 text-red-400 rounded-full text-xs">{{usuario.estado}}</span>
+              }
+            </td>
+            <td class="py-4 px-2 text-sm text-muted-foreground">{{usuario.createdAt | date: 'dd/MM/yyyy'}}</td>
+            <td class="py-4 px-2">
+              <div class="flex gap-2">
+                <button (click)="abrirModal(usuario)" class="glass-card px-2 py-1 text-xs hover:bg-primary/10">✏️</button>
+                @if (usuario.estado === 'HABILITADO'){
+                  <button (click)="deshabilitarUsuario(usuario.id)" class="glass-card px-2 py-1 text-xs hover:bg-red-500/10 text-red-400">🚫</button>
+                } @else {
+                  <button (click)="habilitarUsuario(usuario.id)" class="glass-card px-2 py-1 text-xs hover:bg-green-500/10 text-green-400">✅</button>
+                }
               </div>
-            </div>
-          </td>
-          <td class="py-4 px-2">
-            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">Profesor</span>
-          </td>
-          <td class="py-4 px-2">
-            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Activo</span>
-          </td>
-          <td class="py-4 px-2 text-sm text-muted-foreground">15/10/2024</td>
-          <td class="py-4 px-2">
-            <div class="flex gap-2">
-              <button class="glass-card px-2 py-1 text-xs hover:bg-primary/10">✏️</button>
-              <button class="glass-card px-2 py-1 text-xs hover:bg-red-500/10 text-red-400">🚫</button>
-            </div>
-          </td>
-        </tr>
-        <tr
-          class="border-b border-[hsl(var(--glass-border))]/50 hover:bg-[hsl(var(--primary)_/_0.05)] transition-colors">
-          <td class="py-4 px-2">
-            <div class="flex items-center gap-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center text-white font-bold text-sm">
-                M
-              </div>
-              <div>
-                <div class="font-medium">maria.garcia&#64;udla.edu.co</div>
-                <div class="text-sm text-muted-foreground">María García</div>
-              </div>
-            </div>
-          </td>
-          <td class="py-4 px-2">
-            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Estudiante</span>
-          </td>
-          <td class="py-4 px-2">
-            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Activo</span>
-          </td>
-          <td class="py-4 px-2 text-sm text-muted-foreground">12/10/2024</td>
-          <td class="py-4 px-2">
-            <div class="flex gap-2">
-              <button class="glass-card px-2 py-1 text-xs hover:bg-primary/10">✏️</button>
-              <button class="glass-card px-2 py-1 text-xs hover:bg-red-500/10 text-red-400">🚫</button>
-            </div>
-          </td>
-        </tr>
+            </td>
+          </tr>
+        }
         </tbody>
       </table>
     </div>
 
     <!-- Paginación -->
-    <div class="flex justify-between items-center mt-6">
-      <div class="text-sm text-muted-foreground">Mostrando 1-10 de 12500 usuarios</div>
-      <div class="flex gap-2">
-        <button class="glass-card px-3 py-1 text-sm hover:bg-primary/10">← Anterior</button>
-        <button class="glass-card px-3 py-1 text-sm bg-primary/20">1</button>
-        <button class="glass-card px-3 py-1 text-sm hover:bg-primary/10">2</button>
-        <button class="glass-card px-3 py-1 text-sm hover:bg-primary/10">3</button>
-        <button class="glass-card px-3 py-1 text-sm hover:bg-primary/10">Siguiente →</button>
+    @if (usuarios() && usuarios().content) {
+      <div class="flex justify-between items-center mt-6">
+        <div class="text-sm text-muted-foreground">
+          Mostrando {{ usuarios().page.number + 1 }} de {{ usuarios().page.totalElements }} usuarios
+        </div>
+        <div class="flex gap-2">
+          <button (click)="anteriorPagina()" [disabled]="usuarios().page.number === 0"
+                  class="glass-card px-3 py-1 text-sm hover:bg-primary/10 disabled:opacity-50 disabled:cursor-not-allowed">
+            ← Anterior
+          </button>
+          @for (pagina of arrayPaginas(); track pagina) {
+            <button (click)="irAPagina(pagina)"
+                    [class.bg-primary]="paginaActual() === pagina"
+                    class="glass-card px-3 py-1 text-sm hover:bg-primary/10">
+              {{ pagina + 1 }}
+            </button>
+          }
+          <button (click)="siguientePagina()"
+                  [disabled]="usuarios().page.number === usuarios().page.totalPages"
+                  class="glass-card px-3 py-1 text-sm hover:bg-primary/10 disabled:opacity-50 disabled:cursor-not-allowed">
+            Siguiente →
+            {{ usuarios().page.totalPages }}
+          </button>
+        </div>
       </div>
-    </div>
+    }
+
+    @if (isModalOpen()) {
+      <app-gestion-usuario-modal
+        [usuario]="usuarioSeleccionado()"
+        (cerrar)="cerrarModal()"
+        (usuarioGuardado)="onUsuarioGuardado()">
+      </app-gestion-usuario-modal>
+    }
   </div>

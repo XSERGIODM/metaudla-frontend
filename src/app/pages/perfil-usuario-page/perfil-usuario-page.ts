@@ -33,7 +33,7 @@ export default class PerfilUsuarioPage {
     if (user?.rol === 'ADMINISTRADOR') {
       return '/dashboard-admin';
     } else if (user?.rol === 'PROFESOR') {
-      return '/dashboard-profesor';
+      return '/mis-islas';
     }
     return '/';
   }

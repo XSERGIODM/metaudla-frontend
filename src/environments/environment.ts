@@ -10,6 +10,6 @@ export const environment = {
   FOTO_MILLAN: '/Millan.png',
   FOTO_SERGIO: '/Sergio.png',
   //------------------------API-------------------------------------
-  API_URL: 'http://localhost:8081/api'
+  API_URL: 'https://meta-verso-app-udlaverso.b0falx.easypanel.host/api'
   //---------------------------------------------------------------------------------------
 };

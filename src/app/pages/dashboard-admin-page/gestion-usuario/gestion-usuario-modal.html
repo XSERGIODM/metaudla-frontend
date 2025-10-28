@@ -1,0 +1,53 @@
+<div class="fixed inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm animate-fade-in">
+  <div class="glass-card p-8 rounded-lg w-full max-w-md animate-scale-in">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-2xl font-futuristic font-bold text-primary">
+        {{ usuario?.id ? 'Editar Usuario' : 'Nuevo Usuario' }}
+      </h3>
+      <button (click)="cerrar.emit()" class="text-2xl hover:text-primary">&times;</button>
+    </div>
+
+    <form [formGroup]="formUsuario" (ngSubmit)="guardarUsuario()">
+      <div class="mb-4">
+        <label for="nombre" class="block text-sm font-medium mb-2">Nombre</label>
+        <input id="nombre" type="text" formControlName="nombre" class="glass-card w-full px-4 py-2">
+      </div>
+
+      <div class="mb-4">
+        <label for="username" class="block text-sm font-medium mb-2">Username</label>
+        <input id="username" type="text" formControlName="username" class="glass-card w-full px-4 py-2">
+      </div>
+
+      <div class="mb-4">
+        <label for="correo" class="block text-sm font-medium mb-2">Correo</label>
+        <input id="correo" type="email" formControlName="correo" class="glass-card w-full px-4 py-2">
+      </div>
+
+      @if (!usuario) {
+        <div class="mb-4">
+          <label for="contrasena" class="block text-sm font-medium mb-2">Contraseña</label>
+          <input id="contrasena" type="password" formControlName="contrasena" class="glass-card w-full px-4 py-2">
+        </div>
+      }
+
+      <div class="mb-6">
+        <label for="rol" class="block text-sm font-medium mb-2">Rol</label>
+        <select id="rol" formControlName="rol" class="glass-card w-full px-4 py-2">
+          <option value="ESTUDIANTE">Estudiante</option>
+          <option value="PROFESOR">Profesor</option>
+          <option value="ADMINISTRADOR">Administrador</option>
+        </select>
+      </div>
+
+      <div class="flex justify-end gap-4">
+        <button type="button" (click)="cerrar.emit()" class="glass-card px-4 py-2 hover:bg-primary/10">
+          Cancelar
+        </button>
+        <button type="submit" [disabled]="formUsuario.invalid"
+                class="metaverse-button px-4 py-2 disabled:opacity-50 disabled:cursor-not-allowed">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

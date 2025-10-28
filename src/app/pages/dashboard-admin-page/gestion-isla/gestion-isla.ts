@@ -6,6 +6,6 @@ import {Component} from '@angular/core';
   templateUrl: './gestion-isla.html',
   styleUrl: './gestion-isla.css'
 })
-export class GestionIsla {
+export default class GestionIsla {
 
 }

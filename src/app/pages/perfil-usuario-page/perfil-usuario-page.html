@@ -248,13 +248,22 @@
         </div>
 
         <!-- Dashboard -->
-        @if (usuario()?.rol === 'ADMINISTRADOR' || usuario()?.rol === 'PROFESOR') {
+        @if (usuario()?.rol === 'ADMINISTRADOR') {
           <a [routerLink]="getDashboardRoute()" class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in stagger-3">
             <div class="text-4xl mb-3">📊</div>
             <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Mi Dashboard</h3>
             <p class="text-sm text-muted-foreground mb-4">Gestiona tu contenido y estadísticas</p>
             <div class="metaverse-button inline-block px-4 py-2 text-sm">
               Ir al Dashboard →
+            </div>
+          </a>
+        } @else if (usuario()?.rol === 'PROFESOR'){
+          <a [routerLink]="getDashboardRoute()" class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 hover:scale-[1.02] cursor-pointer animate-fade-in stagger-3">
+            <div class="text-4xl mb-3">🏝️</div>
+            <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">Mis Islas</h3>
+            <p class="text-sm text-muted-foreground mb-4">Gestiona tus islas y estadísticas</p>
+            <div class="metaverse-button inline-block px-4 py-2 text-sm">
+              Ir a Mis Islas →
             </div>
           </a>
         } @else {

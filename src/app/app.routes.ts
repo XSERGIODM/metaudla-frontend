@@ -45,6 +45,33 @@ export const routes: Routes = [
     path: 'dashboard-admin',
     loadComponent: () => import('./pages/dashboard-admin-page/dashboard-admin-page'),
     canActivate: [authGuard],
+    children: [
+      {
+        path: 'gestion-usuario',
+        loadComponent: () => import('./pages/dashboard-admin-page/gestion-usuario/gestion-usuario'),
+        canActivate: [authGuard]
+      },
+      {
+        path: 'gestion-isla',
+        loadComponent: () => import('./pages/dashboard-admin-page/gestion-isla/gestion-isla'),
+        canActivate: [authGuard]
+      },
+      {
+        path: 'gestion-categoria',
+        loadComponent: () => import('./pages/dashboard-admin-page/gestion-categoria/gestion-categoria'),
+        canActivate: [authGuard]
+      },
+      {
+        path: 'logs-actividades',
+        loadComponent: () => import('./pages/dashboard-admin-page/logs-actividades/logs-actividades'),
+        canActivate: [authGuard]
+      },
+      {
+        path: '**',
+        redirectTo: 'gestion-usuario',
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path:'**',
