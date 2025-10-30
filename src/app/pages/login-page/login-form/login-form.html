@@ -54,11 +54,11 @@
     <!-- Login Button -->
     <div class="animate-fade-in stagger-4">
       <button
-        [disabled]="enviando()"
+        [disabled]="enviandoAndLoding()"
         type="submit" class="w-full metaverse-button py-4 text-lg hover:scale-105">
-        @if (!enviando()) {
+        @if (!enviandoAndLoding()) {
           <span>🚀 Iniciar Sesión</span>
-        } @else if (enviando()){
+        } @else if (enviandoAndLoding()){
           <span>⏳ Iniciando sesión...</span>
         }
       </button>

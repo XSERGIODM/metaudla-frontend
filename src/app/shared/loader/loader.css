@@ -1,0 +1,27 @@
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.emoji {
+  font-size: 3rem;
+  animation: bounce 0.6s infinite alternate;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}

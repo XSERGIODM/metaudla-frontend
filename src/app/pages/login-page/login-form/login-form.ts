@@ -18,9 +18,10 @@ export class LoginForm {
   authService = inject(AuthService);
   router = inject(Router);
 
+
   mensajeError = signal<string>('');
   mensajeExito = signal<string>('');
-  enviando = signal<boolean>(false);
+  enviandoAndLoding = signal<boolean>(false);
 
   loginRequest = signal<LoginRequestType>({
     usernameOrEmail: '',
@@ -29,10 +30,10 @@ export class LoginForm {
 
   onSubmit(): void {
     console.log('Formulario de login enviado');
-    this.enviando.set(true);
+    this.enviandoAndLoding.set(true);
 
     if (!this.validarFormulario()) {
-      this.enviando.set(false);
+      this.enviandoAndLoding.set(false);
       return;
     }
 
@@ -41,7 +42,7 @@ export class LoginForm {
         // Guardar datos de autenticación
         this.authService.setLoginData(response);
 
-        this.enviando.set(false);
+        this.enviandoAndLoding.set(false);
         this.mensajeExito.set('Login exitoso');
         console.log('Login exitoso, usuario:', response.usuario.nombre);
         this.limpiarFormulario();
@@ -57,7 +58,7 @@ export class LoginForm {
       error: (error) => {
         console.error('Error al iniciar sesión:', error);
         this.mensajeError.set('Error al iniciar sesión: ' + (error.error?.message || 'Credenciales inválidas'));
-        this.enviando.set(false);
+        this.enviandoAndLoding.set(false);
       }
     });
   }
@@ -81,6 +82,6 @@ export class LoginForm {
     });
     this.mensajeError.set('');
     this.mensajeExito.set('');
-    this.enviando.set(false);
+    this.enviandoAndLoding.set(false);
   }
 }
