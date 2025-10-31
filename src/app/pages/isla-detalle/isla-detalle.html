@@ -15,357 +15,280 @@
         <span>Volver al Catálogo</span>
       </a>
     </div>
+    @if (isLoading()) {
+      <app-loader></app-loader>
+    }@else{
+      <div class="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
+        <!-- Island Preview & Gallery -->
+        <div class="animate-fade-in stagger-1">
+          <div class="glass-card p-8 animate-float">
+            <!-- Main Preview Image -->
+            <div class="relative overflow-hidden rounded-2xl mb-6">
+              <div class="h-96 bg-gradient-to-br from-purple-400 via-blue-500 to-cyan-400 flex items-center justify-center relative">
+                <!-- Island 3D Preview Placeholder -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
-    <div class="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto">
-      <!-- Island Preview & Gallery -->
-      <div class="animate-fade-in stagger-1">
-        <div class="glass-card p-8 animate-float">
-          <!-- Main Preview Image -->
-          <div class="relative overflow-hidden rounded-2xl mb-6">
-            <div class="h-96 bg-gradient-to-br from-purple-400 via-blue-500 to-cyan-400 flex items-center justify-center relative">
-              <!-- Island 3D Preview Placeholder -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              <div class="text-white text-center z-10">
-                <div class="text-6xl mb-4 animate-pulse-glow">🏝️</div>
-                <h3 class="text-2xl font-futuristic font-bold">{{ isla()?.nombre }}</h3>
-                <p class="text-sm opacity-80">Vista 3D Interactiva</p>
+                <img src="{{isla()?.imagenes?.at(0)}}" alt="{{isla()?.nombre}}" class="h-full object-cover">
+
               </div>
             </div>
-            <!-- Island Badges -->
-            <div class="absolute top-4 left-4">
-              <span class="glass-card px-3 py-1 text-sm font-medium text-primary">{{ isla()?.categorias?.at(0) || 'General' }}</span>
-            </div>
-            <div class="absolute top-4 right-4">
-              <span class="glass-card px-3 py-1 text-sm font-medium text-white bg-green-500">🟢0 visitas</span>
-            </div>
-            <div class="absolute bottom-4 left-4">
-              <span class="glass-card px-3 py-1 text-sm font-medium text-white bg-black/50">⭐ 00/5.0</span>
-            </div>
-          </div>
 
-          <!-- Image Gallery -->
-          <div class="mb-6">
-            <h4 class="font-futuristic font-semibold text-primary mb-4">Galería de Imágenes</h4>
-            <div class="grid grid-cols-3 gap-2">
-              <div class="h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg flex items-center justify-center">
-                <span class="text-white text-lg">🖼️</span>
-              </div>
-              <div class="h-20 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center cursor-pointer hover:neon-glow transition-all duration-300">
-                <span class="text-white text-sm font-futuristic">+++++</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Video Section -->
-          <div class="mb-6">
-            <h4 class="font-futuristic font-semibold text-primary mb-4">Videos Disponibles</h4>
-            <div class="space-y-2">
-              <div class="glass-card p-3 flex items-center space-x-3">
-                <div class="w-12 h-12 bg-gradient-to-br from-red-400 to-pink-600 rounded-lg flex items-center justify-center">
-                  <span class="text-white">▶️</span>
+            <!-- Image Gallery -->
+            <div class="mb-6">
+              <h4 class="font-futuristic font-semibold text-primary mb-4">Galería de Imágenes</h4>
+              <div class="grid grid-cols-3 gap-2">
+                <div class="h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg flex items-center justify-center">
+                  <span class="text-white text-lg">🖼️</span>
                 </div>
-                <div>
-                  <div class="font-futuristic font-medium text-primary text-sm">Video Tutorial</div>
-                  <div class="text-xs text-muted-foreground">Exploración de la isla</div>
+                <div class="h-20 bg-gradient-to-br from-gray-400 to-gray-600 rounded-lg flex items-center justify-center cursor-pointer hover:neon-glow transition-all duration-300">
+                  <span class="text-white text-sm font-futuristic">+++++</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Quick Actions -->
-          <div class="space-y-3">
-            <button class="w-full metaverse-button py-4 hover:scale-105 flex items-center justify-center space-x-2">
-              <span>🚀</span>
-              <span>Entrar a {{ isla()?.nombre }}</span>
-            </button>
-            <div class="grid grid-cols-2 gap-2">
-              <button class="glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm flex items-center justify-center space-x-1">
-                <span>⭐</span>
-                <span>Favorito</span>
+            <!-- Video Section -->
+            <div class="mb-6">
+              <h4 class="font-futuristic font-semibold text-primary mb-4">Videos Disponibles</h4>
+              <div class="space-y-2">
+                <div class="glass-card p-3 flex items-center space-x-3">
+                  <div class="w-12 h-12 bg-gradient-to-br from-red-400 to-pink-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white">▶️</span>
+                  </div>
+                  <div>
+                    <div class="font-futuristic font-medium text-primary text-sm">Video Tutorial</div>
+                    <div class="text-xs text-muted-foreground">Exploración de la isla</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="space-y-3">
+              <button class="w-full metaverse-button py-4 hover:scale-105 flex items-center justify-center space-x-2">
+                <span>🚀</span>
+                <span>Entrar a {{ isla()?.nombre }}</span>
               </button>
-              <button class="glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm flex items-center justify-center space-x-1">
-                <span>👍</span>
-                <span>Me gusta</span>
-              </button>
+              <div class="grid grid-cols-2 gap-2">
+                <button class="glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm flex items-center justify-center space-x-1">
+                  <span>⭐</span>
+                  <span>Favorito</span>
+                </button>
+                <button class="glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm flex items-center justify-center space-x-1">
+                  <span>👍</span>
+                  <span>Me gusta</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Island Details -->
-      <div class="animate-fade-in stagger-2">
-        <div class="space-y-6">
-          <!-- Island Title & Description -->
-          <div>
-            <h1 class="text-4xl md:text-5xl font-futuristic font-bold mb-4">
+        <!-- Island Details -->
+        <div class="animate-fade-in stagger-2">
+          <div class="space-y-6">
+            <!-- Island Title & Description -->
+            <div>
+              <h1 class="text-4xl md:text-5xl font-futuristic font-bold mb-4">
               <span class="block bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--primary-light))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
                 {{ isla()?.nombre }}
               </span>
-            </h1>
-            <p class="text-lg text-muted-foreground leading-relaxed mb-4">
-              {{ isla()?.descripcion }}
-            </p>
+              </h1>
+              <p class="text-lg text-muted-foreground leading-relaxed mb-4">
+                {{ isla()?.descripcion }}
+              </p>
 
-            <!-- Status Badge -->
-            <div class="inline-flex items-center space-x-2">
+              <!-- Status Badge -->
+              <div class="inline-flex items-center space-x-2">
               <span class="px-3 py-1 rounded-full text-sm font-medium" [class]="isla()?.estado === 'HABILITADO' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'">
                 {{ isla()?.estado === 'HABILITADO' ? '🟢 Habilitada' : '🔴 Deshabilitada' }}
               </span>
-              <span class="text-muted-foreground text-sm">Versión {{ isla()?.version }}</span>
+                <span class="text-muted-foreground text-sm">Versión {{ isla()?.version }}</span>
+              </div>
             </div>
-          </div>
 
-          <!-- Categories & Tags -->
-          <div class="space-y-4">
-            <div>
-              <h3 class="text-lg font-futuristic font-semibold text-primary mb-3">Categorías</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="glass-card px-3 py-1 text-sm font-medium text-primary">
-                  jaja
+            <!-- Categories & Tags -->
+            <div class="space-y-4">
+              <div>
+                <h3 class="text-lg font-futuristic font-semibold text-primary mb-3">Categorías</h3>
+                <div class="flex flex-wrap gap-2">
+                  @for (categoria of isla()?.categorias; track $index){
+                    <span class="glass-card px-3 py-1 text-sm font-medium text-primary">
+                    {{categoria}}
                 </span>
-              </div>
-            </div>
-
-            <div>
-              <h3 class="text-lg font-futuristic font-semibold text-primary mb-3">Etiquetas</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="glass-card px-3 py-1 text-sm font-medium text-primary">
-                  ajajajajaja
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Statistics -->
-          <div class="glass-card p-6">
-            <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Estadísticas</h3>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="text-center">
-                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.visitas || 0 }}</div>
-                <div class="text-sm text-muted-foreground">Visitas Totales</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl font-futuristic font-bold text-primary">000/5.0</div>
-                <div class="text-sm text-muted-foreground">Rating Promedio</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.meGustaTipos?.length || 0 }}</div>
-                <div class="text-sm text-muted-foreground">Me gusta</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.favoritoIds?.length || 0 }}</div>
-                <div class="text-sm text-muted-foreground">En Favoritos</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Dates -->
-          <div class="glass-card p-6">
-            <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Información Temporal</h3>
-            <div class="space-y-3">
-              <div class="flex justify-between">
-                <span class="text-muted-foreground">Fecha de creación:</span>
-                <span class="font-futuristic font-medium text-primary">{{ isla()?.fechaCreacion | date:'dd/MM/yyyy' }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-muted-foreground">Última actualización:</span>
-                <span class="font-futuristic font-medium text-primary">{{ isla()?.fechaActualizacion | date:'dd/MM/yyyy' }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-muted-foreground">ID de la isla:</span>
-                <span class="font-futuristic font-medium text-primary">#{{ isla()?.id }}</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Download Link -->
-          <div class="glass-card p-6">
-            <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Descargar Recursos</h3>
-            <p class="text-muted-foreground mb-4">
-              Descarga materiales adicionales, assets y recursos complementarios para esta isla.
-            </p>
-            <button class="w-full metaverse-button py-3 hover:scale-105 flex items-center justify-center space-x-2">
-              <span>⬇️</span>
-              <span>Descargar Pack de Recursos</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-<!-- Author Section -->
-<section class="py-20 bg-gradient-to-b from-transparent to-[hsl(var(--muted)_/_0.3)]">
-  <div class="container mx-auto px-6">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-futuristic font-bold text-primary mb-8 text-center animate-fade-in">Creador de la Isla</h2>
-
-      <div class="glass-card p-8 animate-fade-in">
-        <div class="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
-          <!-- Author Avatar -->
-          <div class="flex-shrink-0">
-            <div class="w-24 h-24 bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--primary-light))] rounded-full flex items-center justify-center neon-glow">
-              <span class="text-white font-futuristic font-bold text-2xl">{{isla()?.autorNombre}}</span>
-            </div>
-          </div>
-
-          <!-- Author Info -->
-          <div class="flex-grow text-center md:text-left">
-            <h3 class="text-2xl font-futuristic font-semibold text-primary mb-2">{{ isla()?.autorNombre }}</h3>
-            <p class="text-muted-foreground mb-2">{{ isla()?.autorCorreo }}</p>
-            <div class="inline-flex items-center space-x-2">
-              <span class="px-3 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary rounded-full text-sm">
-                {{ isla()?.autorRol }}
-              </span>
-            </div>
-          </div>
-
-          <!-- Author Stats -->
-          <div class="flex-shrink-0 text-center">
-            <div class="text-2xl font-futuristic font-bold text-primary mb-1">{{ isla()?.autorId }}</div>
-            <div class="text-sm text-muted-foreground">ID de Autor</div>
-          </div>
-        </div>
-
-        <div class="mt-8 pt-6 border-t border-[hsl(var(--glass-border))]">
-          <p class="text-muted-foreground leading-relaxed text-center">
-            Desarrollador principal de experiencias educativas inmersivas en el metaverso UDLA.
-            Especialista en crear ambientes virtuales que facilitan el aprendizaje interactivo y colaborativo.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Features Section -->
-<section class="py-20">
-  <div class="container mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-futuristic font-bold mb-6 animate-fade-in">
-        <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
-          Características de {{ isla()?.nombre }}
-        </span>
-      </h2>
-      <p class="text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in">
-        Explora todas las funcionalidades y herramientas disponibles en esta experiencia educativa.
-      </p>
-    </div>
-
-    <!-- Features Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <!-- Feature 1 -->
-      <div class="island-card text-center animate-fade-in stagger-1">
-        <div class="text-4xl mb-4">📚</div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Aulas Virtuales</h3>
-        <p class="text-muted-foreground">
-          Salas de clase inmersivas con pizarras interactivas y herramientas de colaboración en tiempo real.
-        </p>
-      </div>
-
-      <!-- Feature 2 -->
-      <div class="island-card text-center animate-fade-in stagger-2">
-        <div class="text-4xl mb-4">🧮</div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Laboratorios Interactivos</h3>
-        <p class="text-muted-foreground">
-          Experimentos matemáticos con visualizaciones 3D para conceptos complejos.
-        </p>
-      </div>
-
-      <!-- Feature 3 -->
-      <div class="island-card text-center animate-fade-in stagger-3">
-        <div class="text-4xl mb-4">👥</div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Zonas de Colaboración</h3>
-        <p class="text-muted-foreground">
-          Espacios donde estudiantes trabajan juntos en proyectos y resuelven problemas.
-        </p>
-      </div>
-
-      <!-- Feature 4 -->
-      <div class="island-card text-center animate-fade-in stagger-4">
-        <div class="text-4xl mb-4">🎯</div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Desafíos Gamificados</h3>
-        <p class="text-muted-foreground">
-          Misiones educativas que hacen el aprendizaje más engaging y motivador.
-        </p>
-      </div>
-
-      <!-- Feature 5 -->
-      <div class="island-card text-center animate-fade-in stagger-5">
-        <div class="text-4xl mb-4">📊</div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Analytics de Aprendizaje</h3>
-        <p class="text-muted-foreground">
-          Seguimiento del progreso y métricas de rendimiento educativo.
-        </p>
-      </div>
-
-      <!-- Feature 6 -->
-      <div class="island-card text-center animate-fade-in stagger-6">
-        <div class="text-4xl mb-4">🌐</div>
-        <h3 class="text-xl font-futuristic font-semibold text-primary mb-3">Recursos Multimedia</h3>
-        <p class="text-muted-foreground">
-          Biblioteca de videos, animaciones y materiales interactivos.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Reviews & Ratings Section -->
-<section class="py-20 bg-gradient-to-b from-transparent to-[hsl(var(--muted)_/_0.3)]">
-  <div class="container mx-auto px-6">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-futuristic font-bold text-primary mb-8 text-center animate-fade-in">Reseñas y Calificaciones</h2>
-
-      <!-- Rating Overview -->
-      <div class="glass-card p-8 mb-8 animate-fade-in">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-          <!-- Overall Rating -->
-          <div class="text-center">
-            <div class="text-6xl font-futuristic font-bold text-primary mb-2">{{ 0 }}</div>
-            <div class="text-muted-foreground mb-4">Calificación Promedio</div>
-            <div class="flex justify-center space-x-1 mb-2">
-              <span class="text-2xl" *ngFor="let star of [1,2,3,4,5]">⭐</span>
-            </div>
-            <div class="text-sm text-muted-foreground">Basado en {{ isla()?.puntuacioneCalificacions?.length || 0 }} reseñas</div>
-          </div>
-
-          <!-- Rating Breakdown -->
-          <div class="space-y-2">
-            <div class="flex items-center space-x-3" *ngFor="let rating of [5,4,3,2,1]">
-              <span class="text-sm text-muted-foreground w-8">{{ rating }}⭐</span>
-              <div class="flex-grow bg-[hsl(var(--glass-bg)_/_0.3)] rounded-full h-2">
-                <div class="bg-primary h-2 rounded-full"></div>
-              </div>
-              <span class="text-sm text-muted-foreground w-8"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Recent Reviews -->
-      <div class="space-y-4 animate-fade-in">
-        <div class="glass-card p-6">
-          <div class="flex items-start space-x-4">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
-              <span class="text-white font-futuristic font-bold">U</span>
-            </div>
-            <div class="flex-grow">
-              <div class="flex items-center space-x-2 mb-2">
-                <span class="font-futuristic font-semibold text-primary">Usuario Anónimo</span>
-                <div class="flex">
-                  <span class="text-yellow-400" *ngFor="let star of [1,2,3,4,5]">⭐</span>
+                  }
                 </div>
               </div>
-              <p class="text-muted-foreground leading-relaxed">
-                Excelente experiencia educativa. Los conceptos se explican de manera clara y los ambientes virtuales son realmente inmersivos.
-              </p>
-              <div class="text-xs text-muted-foreground mt-2">Hace 3 días</div>
+
+              <div>
+                <h3 class="text-lg font-futuristic font-semibold text-primary mb-3">Etiquetas</h3>
+                <div class="flex flex-wrap gap-2">
+                  @for (etiqueta of isla()?.etiquetas; track $index){
+                    <span class="glass-card px-3 py-1 text-sm font-medium text-primary">
+                    {{etiqueta}}
+                </span>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="glass-card p-6">
+              <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Estadísticas</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="text-center">
+                  <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.visitas || 0 }}</div>
+                  <div class="text-sm text-muted-foreground">Visitas Totales</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-futuristic font-bold text-primary">000/5.0</div>
+                  <div class="text-sm text-muted-foreground">Rating Promedio</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.meGustaTipos?.length || 0 }}</div>
+                  <div class="text-sm text-muted-foreground">Me gusta</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.favoritoIds?.length || 0 }}</div>
+                  <div class="text-sm text-muted-foreground">En Favoritos</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dates -->
+            <div class="glass-card p-6">
+              <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Información</h3>
+              <div class="space-y-3">
+                <div class="flex justify-between">
+                  <span class="text-muted-foreground">Autor</span>
+                  <span class="font-futuristic font-medium text-primary">{{ isla()?.autorNombre}}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-muted-foreground">Fecha de creación:</span>
+                  <span class="font-futuristic font-medium text-primary">{{ isla()?.fechaCreacion | date:'dd/MM/yyyy' }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-muted-foreground">Última actualización:</span>
+                  <span class="font-futuristic font-medium text-primary">{{ isla()?.fechaActualizacion | date:'dd/MM/yyyy' }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <!-- Comments Section -->
+      <div class="mt-12 animate-fade-in stagger-3">
+        <h2 class="text-3xl font-futuristic font-bold text-primary mb-6">Comentarios</h2>
+
+        <!-- New Comment Form -->
+        <div class="glass-card p-6 mb-8">
+          <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Deja un comentario</h3>
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-light flex-shrink-0">
+              <!-- User Avatar Placeholder -->
+            </div>
+            <div class="flex-grow">
+              <textarea class="w-full bg-transparent border-2 border-primary/20 rounded-lg p-3 focus:outline-none focus:border-primary transition-colors" rows="3" placeholder="Escribe tu comentario aquí..."></textarea>
+              <div class="flex justify-end mt-3">
+                <button class="metaverse-button py-2 px-6 text-sm">
+                  <span>Enviar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comments List -->
+        <div class="space-y-8">
+          <!-- Parent Comment -->
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex-shrink-0">
+              <!-- User Avatar -->
+            </div>
+            <div class="flex-grow">
+              <div class="glass-card p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="font-futuristic font-semibold text-primary">Nombre de Usuario</div>
+                  <div class="text-xs text-muted-foreground">Hace 2 horas</div>
+                </div>
+                <p class="text-muted-foreground">
+                  Este es un comentario de ejemplo. ¡Qué gran isla! Me encanta el diseño y la atmósfera que han creado.
+                </p>
+              </div>
+              <div class="flex items-center space-x-4 mt-2 text-sm">
+                <button class="text-primary hover:underline">Responder</button>
+                <div class="flex items-center space-x-1 text-muted-foreground">
+                  <span>👍</span>
+                  <span>12</span>
+                </div>
+              </div>
+
+              <!-- Child Comment (Reply) -->
+              <div class="mt-6 pl-8 border-l-2 border-primary/20">
+                <div class="flex items-start space-x-4">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex-shrink-0">
+                    <!-- User Avatar -->
+                  </div>
+                  <div class="flex-grow">
+                    <div class="glass-card p-4">
+                      <div class="flex items-center justify-between mb-2">
+                        <div class="font-futuristic font-semibold text-primary">Otro Usuario</div>
+                        <div class="text-xs text-muted-foreground">Hace 1 hora</div>
+                      </div>
+                      <p class="text-muted-foreground">
+                        ¡Totalmente de acuerdo! La mejor isla que he visitado hasta ahora.
+                      </p>
+                    </div>
+                     <div class="flex items-center space-x-4 mt-2 text-sm">
+                        <div class="flex items-center space-x-1 text-muted-foreground">
+                          <span>👍</span>
+                          <span>5</span>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+               <!-- Reply Form (Hidden by default) -->
+              <div class="mt-4 pl-8 hidden">
+                  <div class="flex items-start space-x-4">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-light flex-shrink-0">
+                    </div>
+                    <div class="flex-grow">
+                      <textarea class="w-full bg-transparent border-2 border-primary/20 rounded-lg p-3 focus:outline-none focus:border-primary transition-colors" rows="2" placeholder="Escribe tu respuesta..."></textarea>
+                      <div class="flex justify-end mt-2 space-x-2">
+                         <button class="glass-card px-4 py-1 text-primary hover:bg-primary/10 text-sm">Cancelar</button>
+                        <button class="metaverse-button py-1 px-4 text-sm">Responder</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+           <!-- Parent Comment 2 -->
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 flex-shrink-0">
+              <!-- User Avatar -->
+            </div>
+            <div class="flex-grow">
+              <div class="glass-card p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <div class="font-futuristic font-semibold text-primary">Jugador_XYZ</div>
+                  <div class="text-xs text-muted-foreground">Hace 5 horas</div>
+                </div>
+                <p class="text-muted-foreground">
+                  ¿Alguien sabe dónde encontrar el tesoro escondido? Llevo horas buscando.
+                </p>
+              </div>
+              <div class="flex items-center space-x-4 mt-2 text-sm">
+                <button class="text-primary hover:underline">Responder</button>
+                 <div class="flex items-center space-x-1 text-muted-foreground">
+                  <span>👍</span>
+                  <span>3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
   </div>
-</section>
+</main>

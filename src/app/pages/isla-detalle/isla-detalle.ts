@@ -1,32 +1,28 @@
-import {Component, inject} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, inject, OnInit, signal} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {IslaService} from '../../service/isla-service';
-import {map, switchMap} from 'rxjs/operators';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {Isla} from '../../type/Isla';
+import {Loader} from '../../shared/loader/loader';
 
 @Component({
   selector: 'app-isla-detalle',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, Loader],
   templateUrl: './isla-detalle.html',
   styleUrl: './isla-detalle.css'
 })
-export default class IslaDetalle {
+export default class IslaDetalle implements OnInit {
 
   islaService = inject(IslaService);
   endpointRoute = inject(ActivatedRoute);
+  isLoading = signal(true);
+  isla = signal<Isla | null>(null);
 
-  islaDetalle () {
-    this.islaService.obtenerIsla(this.endpointRoute.snapshot.params['islaId']);
+  ngOnInit(): void {
+    this.isLoading.set(true);
+    this.islaService.obtenerIsla(this.endpointRoute.snapshot.params['key']).subscribe((isla: Isla) => {
+      this.isla.set(isla);
+      this.isLoading.set(false);
+    });
   }
-
-  isla = toSignal(
-    inject(ActivatedRoute)
-      .params
-      .pipe(
-        map((parametro) => parametro['islaId']),
-        switchMap((id) => this.islaService.obtenerIsla(id))
-      )
-  );
 }
