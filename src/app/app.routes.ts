@@ -15,13 +15,11 @@ export const routes: Routes = [
   },
   {
     path: 'islas',
-    loadComponent: () => import('./pages/isla-page/isla-page'),
-    children: [
-      {
-        path: 'isla/:key',
-        loadComponent: () => import('./pages/isla-detalle/isla-detalle'),
-      },
-    ]
+    loadComponent: () => import('./pages/isla-page/isla-page')
+  },
+  {
+    path: 'isla/:key',
+    loadComponent: () => import('./pages/isla-detalle/isla-detalle'),
   },
   {
     path: 'login',
