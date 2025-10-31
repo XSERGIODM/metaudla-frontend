@@ -15,11 +15,8 @@ export class IslaService {
   private api = environment.API_URL + "/isla";
 
   // Listar todas las islas paginadas
-  listarIslas(pagina: number, tamanio: number): Observable<Paginacion<Isla>> {
-    const params = new HttpParams()
-      .set('pagina', pagina.toString())
-      .set('tamanio', tamanio.toString());
-    return this.http.get<Paginacion<Isla>>(`${this.api}/paginadas`, { params });
+  listarIslas(): Observable<Isla[]> {
+    return this.http.get<Isla[]>(`${this.api}`);
   }
 
   // Islas tendencias paginadas

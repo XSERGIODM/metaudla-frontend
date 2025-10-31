@@ -5,29 +5,36 @@ import {IslaService} from '../../service/isla-service';
 import {GridIsla} from '../../shared/grid-isla/grid-isla';
 import {Paginacion} from '../../type/Paginacion';
 import {Isla} from '../../type/Isla';
+import {Loader} from '../../shared/loader/loader';
 
 @Component({
   selector: 'app-isla-page',
   imports: [
     HeaderSeccionIslaPage,
     FilterSeccionIslaPage,
-    GridIsla
+    GridIsla,
+    Loader
   ],
   templateUrl: './isla-page.html',
   styleUrl: './isla-page.css'
 })
 export default class IslaPage implements OnInit{
-  ngOnInit(): void {
-      this.obtenerLista();
-  }
+
   islaService= inject(IslaService);
+  isLoading = signal<boolean>(true);
 
   lista = signal<Isla[]>([]);
 
   obtenerLista(){
-    this.islaService.islasTendencias(1,3).subscribe((lista: Paginacion<Isla>) => {
-      this.lista.set(lista.content);
+    this.isLoading = signal<boolean>(true);
+    this.islaService.listarIslas().subscribe((lista: Isla[]) => {
+      this.lista.set(lista);
+      this.isLoading = signal<boolean>(false);
     });
+  }
+
+  ngOnInit(): void {
+    this.obtenerLista();
   }
 
 }

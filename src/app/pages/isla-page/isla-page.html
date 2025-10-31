@@ -1,18 +1,21 @@
 <section class="py-20 bg-gradient-to-b from-transparent to-[hsl(var(--muted)_/_0.3)]">
   <div class="container mx-auto px-6">
-      <!--Section Header-->
+    <!--Section Header-->
     <app-header-seccion-isla-page></app-header-seccion-isla-page>
 
     <!-- Advanced Filters Bar -->
     <app-filter-seccion-isla-page></app-filter-seccion-isla-page>
 
     <!-- Islands Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      @for (isla of lista(); track isla.id) {
-        <app-grid-isla [isla]="isla"></app-grid-isla>
-      }
-    </div>
-
+    @if (isLoading()) {
+      <app-loader></app-loader>
+    } @else {
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (isla of lista(); track isla.id) {
+          <app-grid-isla [isla]="isla"></app-grid-isla>
+        }
+      </div>
+    }
     <!-- Load More / Pagination -->
     <div class="text-center mt-12 animate-fade-in">
       <button class="metaverse-button px-8 py-4 hover:scale-105">
