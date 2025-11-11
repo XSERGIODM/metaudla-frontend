@@ -40,6 +40,11 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'logs-auditoria',
+    loadComponent: () => import('./pages/logs-auditoria-page/logs-auditoria-page'),
+    canActivate: [authGuard]
+  },
+  {
     path: 'dashboard-admin',
     loadComponent: () => import('./pages/dashboard-admin-page/dashboard-admin-page'),
     canActivate: [authGuard],

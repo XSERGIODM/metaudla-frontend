@@ -38,8 +38,8 @@ export class IslaService {
   }
 
   // Crear nueva isla
-  crearIsla(islaDto: IslaDtoCreate): Observable<Isla> {
-    return this.http.post<Isla>(this.api, islaDto);
+  crearIsla(formData: FormData): Observable<Isla> {
+    return this.http.post<Isla>(this.api, formData);
   }
 
   // Actualizar isla

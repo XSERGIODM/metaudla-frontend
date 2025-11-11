@@ -31,8 +31,8 @@ export default class MiIslasPage implements OnInit {
   // Datos del formulario
   nombreIsla = '';
   descripcionIsla = '';
-  imagenesIsla = '';
-  videosIsla = '';
+  imagenesIsla: File[] = [];
+  videosIsla: File[] = [];
   linkDescargaIsla = '';
   etiquetasIsla = '';
   categoriasSeleccionadas: number[] = [];
@@ -131,19 +131,33 @@ export default class MiIslasPage implements OnInit {
       return;
     }
 
-    const islaDto: IslaDtoCreate = {
-      nombre: this.nombreIsla.trim(),
-      descripcion: this.descripcionIsla.trim(),
-      imagenes: this.imagenesIsla.split('\n').map(url => url.trim()).filter(url => url),
-      videos: this.videosIsla.split('\n').map(url => url.trim()).filter(url => url),
-      linkDescarga: this.linkDescargaIsla.trim(),
-      autorId: usuarioActual.id,
-      etiquetas: this.etiquetasIsla.split(',').map(tag => tag.trim()).filter(tag => tag),
-      categoriaIds: this.categoriasSeleccionadas
-    };
+    // Crear FormData para enviar archivos
+    const formData = new FormData();
+
+    // Agregar datos del formulario directamente al FormData
+    formData.append('nombre', this.nombreIsla.trim());
+    formData.append('descripcion', this.descripcionIsla.trim());
+    formData.append('linkDescarga', this.linkDescargaIsla.trim());
+    formData.append('autorId', usuarioActual.id.toString());
+    formData.append('etiquetas', JSON.stringify(this.etiquetasIsla.split(',').map(tag => tag.trim()).filter(tag => tag)));
+
+    // Agregar categoriaIds como campos separados para que Spring los parse como List<Long>
+    this.categoriasSeleccionadas.forEach(categoriaId => {
+      formData.append('categoriaIds', categoriaId.toString());
+    });
+
+    // Agregar archivos de imágenes
+    this.imagenesIsla.forEach((file, index) => {
+      formData.append('imagenesArchivos', file, file.name);
+    });
+
+    // Agregar archivos de videos
+    this.videosIsla.forEach((file, index) => {
+      formData.append('videosArchivos', file, file.name);
+    });
 
     this.enviandoFormulario = true;
-    this.islaService.crearIsla(islaDto).subscribe({
+    this.islaService.crearIsla(formData).subscribe({
       next: (islaCreada) => {
         this.mensajeExito = 'Isla creada exitosamente';
         this.enviandoFormulario = false;
@@ -184,20 +198,34 @@ export default class MiIslasPage implements OnInit {
       return false;
     }
 
-    // Validar URLs de imágenes
-    const imagenesUrls = this.imagenesIsla.split('\n').map(url => url.trim()).filter(url => url);
-    for (const url of imagenesUrls) {
-      if (!this.esUrlValida(url)) {
-        this.mensajeError = 'Una o más URLs de imágenes no son válidas';
+    // Validar cantidad de imágenes (1-10)
+    if (this.imagenesIsla.length < 1) {
+      this.mensajeError = 'Debe seleccionar al menos 1 imagen';
+      return false;
+    }
+    if (this.imagenesIsla.length > 10) {
+      this.mensajeError = 'No puede seleccionar más de 10 imágenes';
+      return false;
+    }
+
+    // Validar tipos de archivos de imágenes
+    for (const file of this.imagenesIsla) {
+      if (!file.type.startsWith('image/')) {
+        this.mensajeError = 'Solo se permiten archivos de imagen';
         return false;
       }
     }
 
-    // Validar URLs de videos
-    const videosUrls = this.videosIsla.split('\n').map(url => url.trim()).filter(url => url);
-    for (const url of videosUrls) {
-      if (!this.esUrlValida(url)) {
-        this.mensajeError = 'Una o más URLs de videos no son válidas';
+    // Validar cantidad de videos (0-3)
+    if (this.videosIsla.length > 3) {
+      this.mensajeError = 'No puede seleccionar más de 3 videos';
+      return false;
+    }
+
+    // Validar tipos de archivos de videos
+    for (const file of this.videosIsla) {
+      if (!file.type.startsWith('video/')) {
+        this.mensajeError = 'Solo se permiten archivos de video';
         return false;
       }
     }
@@ -223,13 +251,35 @@ export default class MiIslasPage implements OnInit {
   private limpiarFormulario(): void {
     this.nombreIsla = '';
     this.descripcionIsla = '';
-    this.imagenesIsla = '';
-    this.videosIsla = '';
+    this.imagenesIsla = [];
+    this.videosIsla = [];
     this.linkDescargaIsla = '';
     this.etiquetasIsla = '';
     this.categoriasSeleccionadas = [];
     this.mensajeError = '';
     this.mensajeExito = '';
+  }
+
+  onImagenesSeleccionadas(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      this.imagenesIsla = Array.from(input.files);
+    }
+  }
+
+  onVideosSeleccionados(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files) {
+      this.videosIsla = Array.from(input.files);
+    }
+  }
+
+  removerImagen(index: number): void {
+    this.imagenesIsla.splice(index, 1);
+  }
+
+  removerVideo(index: number): void {
+    this.videosIsla.splice(index, 1);
   }
 
   recargarIslas(): void {

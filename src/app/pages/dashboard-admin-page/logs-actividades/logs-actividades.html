@@ -4,52 +4,51 @@
       <span>📋</span> Actividad Reciente del Sistema
     </h3>
 
-    <div class="space-y-4">
-      <div class="flex items-start gap-4 p-4 glass-card rounded-lg">
-        <div class="text-2xl">👤</div>
-        <div class="flex-1">
-          <div class="font-medium">Nuevo usuario registrado</div>
-          <div class="text-sm text-muted-foreground">Juan Pérez se registró como estudiante</div>
-          <div class="text-xs text-muted-foreground mt-1">Hace 5 minutos</div>
-        </div>
-        <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Usuario</span>
+    @if (loading()) {
+      <div class="flex justify-center items-center py-8">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <span class="ml-2 text-muted-foreground">Cargando logs...</span>
+      </div>
+    } @else if (error()) {
+      <div class="text-center py-8">
+        <div class="text-red-400 mb-2">⚠️ {{ error() }}</div>
+        <button
+          class="metaverse-button px-4 py-2 text-sm"
+          (click)="loadAuditorias()">
+          Reintentar
+        </button>
+      </div>
+    } @else {
+      <div class="space-y-4">
+        @for (auditoria of auditorias(); track auditoria.id) {
+          <div class="flex items-start gap-4 p-4 glass-card rounded-lg">
+            <div class="text-2xl">{{ getIconForMethod(auditoria.metodoHttp) }}</div>
+            <div class="flex-1">
+              <div class="font-medium">{{ auditoria.endpoint }}</div>
+              <div class="text-sm text-muted-foreground">
+                {{ auditoria.usuarioNombre }} - {{ auditoria.metodoHttp }} {{ auditoria.endpoint }}
+                @if (auditoria.mensajeError) {
+                  <span class="text-red-400">({{ auditoria.mensajeError }})</span>
+                }
+              </div>
+              <div class="text-xs text-muted-foreground mt-1">{{ formatTime(auditoria.timestamp) }}</div>
+            </div>
+            <span [class]="getBadgeClass(auditoria.exito)">
+              {{ getBadgeText(auditoria.exito) }}
+            </span>
+          </div>
+        } @empty {
+          <div class="text-center py-8 text-muted-foreground">
+            No hay registros de auditoría disponibles
+          </div>
+        }
       </div>
 
-      <div class="flex items-start gap-4 p-4 glass-card rounded-lg">
-        <div class="text-2xl">🏝️</div>
-        <div class="flex-1">
-          <div class="font-medium">Nueva isla creada</div>
-          <div class="text-sm text-muted-foreground">María García creó "Álgebra Lineal Avanzada"</div>
-          <div class="text-xs text-muted-foreground mt-1">Hace 12 minutos</div>
-        </div>
-        <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs">Contenido</span>
+      <div class="text-center mt-6">
+        <button class="metaverse-button px-6 py-3 hover:scale-105" (click)="navigateToAllLogs()">
+          Ver Todos los Logs →
+        </button>
       </div>
-
-      <div class="flex items-start gap-4 p-4 glass-card rounded-lg">
-        <div class="text-2xl">🚫</div>
-        <div class="flex-1">
-          <div class="font-medium">Usuario suspendido</div>
-          <div class="text-sm text-muted-foreground">Usuario con ID 123 suspendido por violación de términos</div>
-          <div class="text-xs text-muted-foreground mt-1">Hace 1 hora</div>
-        </div>
-        <span class="px-2 py-1 bg-red-500/20 text-red-400 rounded-full text-xs">Moderación</span>
-      </div>
-
-      <div class="flex items-start gap-4 p-4 glass-card rounded-lg">
-        <div class="text-2xl">📊</div>
-        <div class="flex-1">
-          <div class="font-medium">Backup completado</div>
-          <div class="text-sm text-muted-foreground">Backup automático de base de datos realizado exitosamente</div>
-          <div class="text-xs text-muted-foreground mt-1">Hace 2 horas</div>
-        </div>
-        <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Sistema</span>
-      </div>
-    </div>
-
-    <div class="text-center mt-6">
-      <button class="metaverse-button px-6 py-3 hover:scale-105">
-        Ver Todos los Logs →
-      </button>
-    </div>
+    }
   </div>
 

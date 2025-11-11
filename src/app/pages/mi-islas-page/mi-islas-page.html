@@ -1,8 +1,10 @@
 <!-- Hero Section - Mis Islas -->
 <main class="relative min-h-screen hero-gradient">
   <!-- Background Effects -->
-  <div class="absolute inset-0 bg-gradient-to-br from-[hsl(var(--bg-gradient-start))] to-[hsl(var(--bg-gradient-end))]"></div>
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-light)_/_0.1),hsl(var(--metaverse-crystal)_/_0.05),transparent)]"></div>
+  <div
+    class="absolute inset-0 bg-gradient-to-br from-[hsl(var(--bg-gradient-start))] to-[hsl(var(--bg-gradient-end))]"></div>
+  <div
+    class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary-light)_/_0.1),hsl(var(--metaverse-crystal)_/_0.05),transparent)]"></div>
 
   <!-- Content -->
   <div class="container mx-auto px-6 py-20 relative z-10">
@@ -15,12 +17,14 @@
           <!-- Título y Descripción -->
           <div>
             <h1 class="text-4xl md:text-5xl font-futuristic font-bold mb-4">
-              <span class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
+              <span
+                class="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--metaverse-crystal))] bg-clip-text text-transparent">
                 🏝️ Mis Islas
               </span>
             </h1>
             <p class="text-lg text-muted-foreground max-w-2xl">
-              Gestiona tus islas educativas. Crea, edita y administra el contenido que compartes con la comunidad UDLAVerso.
+              Gestiona tus islas educativas. Crea, edita y administra el contenido que compartes con la comunidad
+              UDLAVerso.
             </p>
           </div>
 
@@ -29,7 +33,8 @@
             <button class="metaverse-button px-6 py-3 hover:scale-105" (click)="abrirModalCrear()">
               ✨ Crear Nueva Isla
             </button>
-            <button class="glass-card px-6 py-3 text-muted-foreground hover:text-primary transition-colors" (click)="recargarIslas()">
+            <button class="glass-card px-6 py-3 text-muted-foreground hover:text-primary transition-colors"
+                    (click)="recargarIslas()">
               🔄 Recargar
             </button>
           </div>
@@ -53,7 +58,8 @@
           <!-- Filtro por Estado -->
           <div class="w-full md:w-auto">
             <label class="block text-sm font-medium text-primary mb-2 font-futuristic">📊 Estado</label>
-            <select class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+            <select
+              class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
               <option value="">Todos</option>
               <option value="HABILITADO">Habilitadas</option>
               <option value="DESHABILITADO">Deshabilitadas</option>
@@ -63,7 +69,8 @@
           <!-- Filtro por Categoría -->
           <div class="w-full md:w-auto">
             <label class="block text-sm font-medium text-primary mb-2 font-futuristic">🏷️ Categoría</label>
-            <select class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+            <select
+              class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
               <option value="">Todas</option>
               <option value="Matemáticas">Matemáticas</option>
               <option value="Ciencias">Ciencias</option>
@@ -85,27 +92,27 @@
     <!-- Estadísticas Rápidas -->
     <div class="max-w-7xl mx-auto mb-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-       <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-1">
-         <div class="text-3xl mb-2">🏝️</div>
-         <div class="text-2xl font-futuristic font-bold text-primary mb-1">{{ totalIslas }}</div>
-         <div class="text-sm text-muted-foreground">Total Islas</div>
-       </div>
-       <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-2">
-         <div class="text-3xl mb-2">✅</div>
-         <div class="text-2xl font-futuristic font-bold text-green-400 mb-1">{{ islasHabilitadas }}</div>
-         <div class="text-sm text-muted-foreground">Habilitadas</div>
-       </div>
-       <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-3">
-         <div class="text-3xl mb-2">🚫</div>
-         <div class="text-2xl font-futuristic font-bold text-red-400 mb-1">{{ islasDeshabilitadas }}</div>
-         <div class="text-sm text-muted-foreground">Deshabilitadas</div>
-       </div>
-       <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-4">
-         <div class="text-3xl mb-2">⭐</div>
-         <div class="text-2xl font-futuristic font-bold text-primary mb-1">{{ totalVisitas }}</div>
-         <div class="text-sm text-muted-foreground">Total Visitas</div>
-       </div>
-     </div>
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-1">
+          <div class="text-3xl mb-2">🏝️</div>
+          <div class="text-2xl font-futuristic font-bold text-primary mb-1">{{ totalIslas }}</div>
+          <div class="text-sm text-muted-foreground">Total Islas</div>
+        </div>
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-2">
+          <div class="text-3xl mb-2">✅</div>
+          <div class="text-2xl font-futuristic font-bold text-green-400 mb-1">{{ islasHabilitadas }}</div>
+          <div class="text-sm text-muted-foreground">Habilitadas</div>
+        </div>
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-3">
+          <div class="text-3xl mb-2">🚫</div>
+          <div class="text-2xl font-futuristic font-bold text-red-400 mb-1">{{ islasDeshabilitadas }}</div>
+          <div class="text-sm text-muted-foreground">Deshabilitadas</div>
+        </div>
+        <div class="glass-card p-6 text-center hover:neon-glow transition-all duration-300 animate-fade-in stagger-4">
+          <div class="text-3xl mb-2">⭐</div>
+          <div class="text-2xl font-futuristic font-bold text-primary mb-1">{{ totalVisitas }}</div>
+          <div class="text-sm text-muted-foreground">Total Visitas</div>
+        </div>
+      </div>
     </div>
 
     <!-- Grid de Islas -->
@@ -134,72 +141,81 @@
       } @else {
         <!-- Grid de Islas -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div *ngFor="let isla of misIslas; let i = index" class="island-card animate-fade-in" [class.stagger-1]="i % 3 === 0" [class.stagger-2]="i % 3 === 1" [class.stagger-3]="i % 3 === 2">
+          @for (isla of misIslas; track isla.id; let i = $index) {
+            <div class="island-card animate-fade-in" [class.stagger-1]="i % 3 === 0" [class.stagger-2]="i % 3 === 1"
+                 [class.stagger-3]="i % 3 === 2">
 
-            <!-- Imagen de la Isla -->
-            <div class="relative overflow-hidden rounded-xl mb-4">
-              <div class="h-48 bg-gradient-to-br from-purple-400 to-blue-600 flex items-center justify-center relative">
-                <div class="text-white text-center">
-                  <div class="text-4xl mb-2">🏝️</div>
-                  <div class="font-futuristic font-bold">{{ isla.nombre }}</div>
+              <!-- Imagen de la Isla -->
+              <div class="relative overflow-hidden rounded-xl mb-4">
+                <div
+                  class="h-48 bg-gradient-to-br from-purple-400 to-blue-600 flex items-center justify-center relative">
+                  <div class="text-white text-center">
+                    <img src="{{ isla.imagenes.at(0) }}" alt="{{ isla.nombre }}">
+                  </div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              </div>
 
-              <!-- Badges -->
-              <div class="absolute top-4 left-4 flex flex-col gap-2 z-20">
-                <span class="glass-card px-2 py-1 text-xs font-medium" [class.text-green-400]="isla.estado === 'HABILITADO'" [class.text-red-400]="isla.estado === 'DESHABILITADO'">
+                <!-- Badges -->
+                <div class="absolute top-4 left-4 flex flex-col gap-2 z-20">
+                <span class="glass-card px-2 py-1 text-xs font-medium"
+                      [class.text-green-400]="isla.estado === 'HABILITADO'"
+                      [class.text-red-400]="isla.estado === 'DESHABILITADO'">
                   {{ isla.estado === 'HABILITADO' ? '✅ Habilitada' : '🚫 Deshabilitada' }}
                 </span>
+                </div>
+                <div class="absolute top-4 right-4 z-20">
+                  <span
+                    class="glass-card px-2 py-1 text-xs font-medium text-white bg-primary">👁️ {{ isla.visitas }}</span>
+                </div>
               </div>
-              <div class="absolute top-4 right-4 z-20">
-                <span class="glass-card px-2 py-1 text-xs font-medium text-white bg-primary">👁️ {{ isla.visitas }}</span>
+
+              <!-- Información de la Isla -->
+              <div class="space-y-4">
+                <div>
+                  <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">{{ isla.nombre }}</h3>
+                  <p class="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                    {{ isla.descripcion }}
+                  </p>
+                </div>
+
+                <!-- Etiquetas -->
+                <div class="flex flex-wrap gap-1">
+                  @for (etiqueta of isla.etiquetas; track etiqueta) {
+                    <span class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">
+                    {{ etiqueta }}
+                  </span>
+                  }
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="flex justify-between items-center text-sm text-muted-foreground">
+                  <span>🫶🏼 {{ isla.meGustaTipos.length || 0 }}</span>
+                  <span>🔖 {{ isla.favoritoIds.length || 0 }} Favoritos</span>
+                  <span>⭐ {{ calcularPromedio(isla.puntuacioneCalificacions) }}/5.0</span>
+                </div>
+
+                <!-- Fechas -->
+                <div class="text-xs text-muted-foreground">
+                  <div>Creada: {{ isla.fechaCreacion | date:'dd/MM/yyyy' }}</div>
+                  <div>Actualizada: {{ isla.fechaActualizacion | date:'dd/MM/yyyy' }}</div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="flex gap-2 pt-4 border-t border-[hsl(var(--glass-border))]">
+                  <a class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center"
+                     [routerLink]="['/isla', isla.id]">
+                    🚀 Ver Isla
+                  </a>
+                  <button class="glass-card px-3 py-2 text-primary hover:bg-primary/10 transition-colors">
+                    ✏️
+                  </button>
+                  <button class="glass-card px-3 py-2 text-red-400 hover:bg-red-500/10 transition-colors">
+                    🗑️
+                  </button>
+                </div>
               </div>
             </div>
-
-            <!-- Información de la Isla -->
-            <div class="space-y-4">
-              <div>
-                <h3 class="text-xl font-futuristic font-semibold text-primary mb-2">{{ isla.nombre }}</h3>
-                <p class="text-muted-foreground text-sm leading-relaxed line-clamp-2">
-                  {{ isla.descripcion }}
-                </p>
-              </div>
-
-              <!-- Etiquetas -->
-              <div class="flex flex-wrap gap-1">
-                <span *ngFor="let etiqueta of isla.etiquetas" class="px-2 py-1 bg-[hsl(var(--primary)_/_0.1)] text-primary text-xs rounded-full">
-                  {{ etiqueta }}
-                </span>
-              </div>
-
-              <!-- Estadísticas -->
-              <div class="flex justify-between items-center text-sm text-muted-foreground">
-                <span>🫶🏼 {{ isla.meGustaTipos.length || 0 }}</span>
-                <span>🔖 {{ isla.favoritoIds.length || 0 }} Favoritos</span>
-                <span>⭐ {{ calcularPromedio(isla.puntuacioneCalificacions) }}/5.0</span>
-              </div>
-
-              <!-- Fechas -->
-              <div class="text-xs text-muted-foreground">
-                <div>Creada: {{ isla.fechaCreacion | date:'dd/MM/yyyy' }}</div>
-                <div>Actualizada: {{ isla.fechaActualizacion | date:'dd/MM/yyyy' }}</div>
-              </div>
-
-              <!-- Acciones -->
-              <div class="flex gap-2 pt-4 border-t border-[hsl(var(--glass-border))]">
-                <a class="flex-1 metaverse-button py-2 px-4 text-sm hover:scale-105 text-center" [routerLink]="['/isla', isla.id]">
-                  🚀 Ver Isla
-                </a>
-                <button class="glass-card px-3 py-2 text-primary hover:bg-primary/10 transition-colors">
-                  ✏️
-                </button>
-                <button class="glass-card px-3 py-2 text-red-400 hover:bg-red-500/10 transition-colors">
-                  🗑️
-                </button>
-              </div>
-            </div>
-          </div>
+          }
         </div>
       }
     </div>
@@ -208,124 +224,157 @@
 </main>
 
 <!-- Modal para Crear/Editar Isla -->
-<div *ngIf="mostrarModalCrear" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
-  <div class="glass-card p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+@if (mostrarModalCrear) {
+  <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
+    <div class="glass-card p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
 
-    <!-- Header del Modal -->
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="text-2xl font-futuristic font-bold text-primary">
-        ✨ Crear Nueva Isla
-      </h2>
-      <button (click)="cerrarModalCrear()" class="text-muted-foreground hover:text-primary text-2xl">
-        ✕
-      </button>
-    </div>
+      <!-- Header del Modal -->
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-futuristic font-bold text-primary">
+          ✨ Crear Nueva Isla
+        </h2>
+        <button (click)="cerrarModalCrear()" class="text-muted-foreground hover:text-primary text-2xl">
+          ✕
+        </button>
+      </div>
 
-    <!-- Mensajes de Error/Exito -->
-    <div *ngIf="mensajeError" class="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400">
-      {{ mensajeError }}
-    </div>
-    <div *ngIf="mensajeExito" class="mb-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400">
-      {{ mensajeExito }}
-    </div>
-
-    <!-- Formulario -->
-    <form (ngSubmit)="crearIsla()" #formulario="ngForm">
-      <div class="space-y-6">
-
-        <!-- Nombre -->
-        <div>
-          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Nombre de la Isla *</label>
-          <input type="text"
-                 [(ngModel)]="nombreIsla"
-                 name="nombre"
-                 placeholder="Ej: Matemáticas Avanzadas"
-                 class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+      <!-- Mensajes de Error/Exito -->
+      @if (mensajeError) {
+        <div class="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400">
+          {{ mensajeError }}
         </div>
-
-        <!-- Descripción -->
-        <div>
-          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Descripción *</label>
-          <textarea rows="4"
-                    [(ngModel)]="descripcionIsla"
-                    name="descripcion"
-                    placeholder="Describe el contenido y objetivos de aprendizaje de esta isla..."
-                    class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"></textarea>
+      }
+      @if (mensajeExito) {
+        <div class="mb-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400">
+          {{ mensajeExito }}
         </div>
+      }
 
-        <!-- Imágenes -->
-        <div>
-          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Imágenes (URLs)</label>
-          <textarea [(ngModel)]="imagenesIsla"
-                    name="imagenes"
-                    placeholder="Una URL por línea (http://...)"
-                    rows="3"
-                    class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"></textarea>
-        </div>
+      <!-- Formulario -->
+      <form (ngSubmit)="crearIsla()" #formulario="ngForm">
+        <div class="space-y-6">
 
-        <!-- Videos -->
-        <div>
-          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Videos (URLs)</label>
-          <textarea [(ngModel)]="videosIsla"
-                    name="videos"
-                    placeholder="Una URL por línea (http://...)"
-                    rows="3"
-                    class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"></textarea>
-        </div>
+          <!-- Nombre -->
+          <div>
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Nombre de la Isla *</label>
+            <input type="text"
+                   [(ngModel)]="nombreIsla"
+                   name="nombre"
+                   placeholder="Ej: Matemáticas Avanzadas"
+                   class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+          </div>
 
-        <!-- Link de Descarga -->
-        <div>
-          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Link de Descarga</label>
-          <input type="url"
-                 [(ngModel)]="linkDescargaIsla"
-                 name="linkDescarga"
-                 placeholder="https://ejemplo.com/descarga"
-                 class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
-        </div>
+          <!-- Descripción -->
+          <div>
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Descripción *</label>
+            <textarea rows="4"
+                      [(ngModel)]="descripcionIsla"
+                      name="descripcion"
+                      placeholder="Describe el contenido y objetivos de aprendizaje de esta isla..."
+                      class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"></textarea>
+          </div>
 
-        <!-- Etiquetas -->
-        <div>
-          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Etiquetas</label>
-          <input type="text"
-                 [(ngModel)]="etiquetasIsla"
-                 name="etiquetas"
-                 placeholder="matemáticas, cálculo, avanzado (separadas por comas)"
-                 class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
-        </div>
+          <!-- Imágenes -->
+          <div>
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Imágenes (1-10 archivos)</label>
+            <input type="file"
+                   multiple
+                   accept="image/*"
+                   (change)="onImagenesSeleccionadas($event)"
+                   class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-primary file:text-primary-foreground hover:file:bg-primary/90">
+            @if (imagenesIsla.length > 0) {
+              <div class="mt-3 space-y-2">
+                <p class="text-sm text-muted-foreground">{{ imagenesIsla.length }} archivo(s) seleccionado(s):</p>
+                @for (file of imagenesIsla; track file.name; let i = $index) {
+                  <div class="flex items-center justify-between p-2 bg-[hsl(var(--glass-bg)_/_0.3)] rounded-lg">
+                    <span class="text-sm">{{ file.name }} ({{ (file.size / 1024 / 1024).toFixed(2) }} MB)</span>
+                    <button type="button" (click)="removerImagen(i)" class="text-red-400 hover:text-red-600">✕</button>
+                  </div>
+                }
+              </div>
+            }
+          </div>
 
-        <!-- Categorías -->
-        <div>
-          <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Categorías</label>
-          <div class="grid grid-cols-2 gap-2 max-h-32 overflow-y-auto">
-            <label *ngFor="let categoria of categorias" class="flex items-center gap-2 p-2 glass-card rounded-lg cursor-pointer hover:bg-primary/10">
-              <input type="checkbox"
-                     [checked]="categoriasSeleccionadas.includes(categoria.id)"
-                     (change)="toggleCategoria(categoria.id)"
-                     class="text-primary focus:ring-primary">
-              <span class="text-sm">{{ categoria.nombre }}</span>
-            </label>
+          <!-- Videos -->
+          <div>
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Videos (0-3 archivos, opcional)</label>
+            <input type="file"
+                   multiple
+                   accept="video/*"
+                   (change)="onVideosSeleccionados($event)"
+                   class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-primary file:text-primary-foreground hover:file:bg-primary/90">
+            @if (videosIsla.length > 0) {
+              <div class="mt-3 space-y-2">
+                <p class="text-sm text-muted-foreground">{{ videosIsla.length }} archivo(s) seleccionado(s):</p>
+                @for (file of videosIsla; track file.name; let i = $index) {
+                  <div class="flex items-center justify-between p-2 bg-[hsl(var(--glass-bg)_/_0.3)] rounded-lg">
+                    <span class="text-sm">{{ file.name }} ({{ (file.size / 1024 / 1024).toFixed(2) }} MB)</span>
+                    <button type="button" (click)="removerVideo(i)" class="text-red-400 hover:text-red-600">✕</button>
+                  </div>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- Link de Descarga -->
+          <div>
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Link de Descarga</label>
+            <input type="url"
+                   [(ngModel)]="linkDescargaIsla"
+                   name="linkDescarga"
+                   placeholder="https://ejemplo.com/descarga"
+                   class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+          </div>
+
+          <!-- Etiquetas -->
+          <div>
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Etiquetas</label>
+            <input type="text"
+                   [(ngModel)]="etiquetasIsla"
+                   name="etiquetas"
+                   placeholder="matemáticas, cálculo, avanzado (separadas por comas)"
+                   class="w-full px-4 py-3 bg-[hsl(var(--glass-bg)_/_0.5)] border border-[hsl(var(--glass-border))] rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300">
+          </div>
+
+          <!-- Categorías -->
+          <div>
+            <label class="block text-sm font-medium text-primary mb-2 font-futuristic">Categorías</label>
+            <div class="grid grid-cols-2 gap-2 max-h-32 overflow-y-auto">
+              @for (categoria of categorias; track categoria.id) {
+                <label class="flex items-center gap-2 p-2 glass-card rounded-lg cursor-pointer hover:bg-primary/10">
+                  <input type="checkbox"
+                         [checked]="categoriasSeleccionadas.includes(categoria.id)"
+                         (change)="toggleCategoria(categoria.id)"
+                         class="text-primary focus:ring-primary">
+                  <span class="text-sm">{{ categoria.nombre }}</span>
+                </label>
+              }
+            </div>
+          </div>
+
+          <!-- Botones del Modal -->
+          <div class="flex gap-4 pt-6 border-t border-[hsl(var(--glass-border))]">
+            <button type="submit"
+                    [disabled]="enviandoFormulario"
+                    class="flex-1 metaverse-button py-3 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+              @if (!enviandoFormulario) {
+                <span>✨ Crear Isla</span>
+              }
+              @if (enviandoFormulario) {
+                <span>⏳ Creando...</span>
+              }
+            </button>
+            <button type="button"
+                    (click)="cerrarModalCrear()"
+                    class="glass-card px-6 py-3 text-muted-foreground hover:text-primary transition-colors">
+              Cancelar
+            </button>
           </div>
         </div>
-
-        <!-- Botones del Modal -->
-        <div class="flex gap-4 pt-6 border-t border-[hsl(var(--glass-border))]">
-          <button type="submit"
-                  [disabled]="enviandoFormulario"
-                  class="flex-1 metaverse-button py-3 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
-            <span *ngIf="!enviandoFormulario">✨ Crear Isla</span>
-            <span *ngIf="enviandoFormulario">⏳ Creando...</span>
-          </button>
-          <button type="button"
-                  (click)="cerrarModalCrear()"
-                  class="glass-card px-6 py-3 text-muted-foreground hover:text-primary transition-colors">
-            Cancelar
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
-
+}
 <!-- Modal de Confirmación para Eliminar -->
 <!--<div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6">
   <div class="glass-card p-8 max-w-md w-full">
