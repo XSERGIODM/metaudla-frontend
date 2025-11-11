@@ -17,12 +17,24 @@ export default class IslaDetalle implements OnInit {
   endpointRoute = inject(ActivatedRoute);
   isLoading = signal(true);
   isla = signal<Isla | null>(null);
+  imagenActual = signal<string>('');
+  videoActual = signal<string>('');
 
   ngOnInit(): void {
     this.isLoading.set(true);
     this.islaService.obtenerIsla(this.endpointRoute.snapshot.params['key']).subscribe((isla: Isla) => {
       this.isla.set(isla);
+      this.imagenActual.set(isla.imagenes?.[0] || '');
+      this.videoActual.set(isla.videos?.[0] || '');
       this.isLoading.set(false);
     });
+  }
+
+  cambiarImagen(imagen: string): void {
+    this.imagenActual.set(imagen);
+  }
+
+  cambiarVideo(video: string): void {
+    this.videoActual.set(video);
   }
 }
