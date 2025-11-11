@@ -27,15 +27,14 @@ export default class IslaPage implements OnInit{
   filters = signal<FilterState>({
     searchTerm: '',
     sortBy: 'popular',
-    categoria: '',
-    etiqueta: ''
+    categoria: ''
   });
 
   // Computed signal para filtrar y ordenar las islas
   filteredIslas = computed(() => {
     let filtered = this.lista();
 
-    const { searchTerm, categoria, etiqueta, sortBy } = this.filters();
+    const { searchTerm, categoria, sortBy } = this.filters();
 
     // Filtrar por búsqueda
     if (searchTerm) {
@@ -53,12 +52,6 @@ export default class IslaPage implements OnInit{
       );
     }
 
-    // Filtrar por etiqueta
-    if (etiqueta) {
-      filtered = filtered.filter(isla =>
-        isla.etiquetas.includes(etiqueta)
-      );
-    }
 
 
     // Ordenar
