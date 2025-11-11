@@ -88,13 +88,19 @@
                 <span>Entrar a {{ isla()?.nombre }}</span>
               </button>
               <div class="grid grid-cols-2 gap-2">
-                <button class="glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm flex items-center justify-center space-x-1">
+                <button
+                  class="glass-card px-4 py-2 transition-all duration-300 text-sm flex items-center justify-center space-x-1"
+                  [class]="isFavorited() ? 'bg-primary text-primary-foreground' : 'text-primary hover:text-primary-foreground hover:bg-primary'"
+                  (click)="toggleFavorite()">
                   <span>⭐</span>
-                  <span>Favorito</span>
+                  <span>{{ isFavorited() ? 'En Favoritos' : 'Favorito' }}</span>
                 </button>
-                <button class="glass-card px-4 py-2 text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-300 text-sm flex items-center justify-center space-x-1">
+                <button
+                  class="glass-card px-4 py-2 transition-all duration-300 text-sm flex items-center justify-center space-x-1"
+                  [class]="isLiked() ? 'bg-primary text-primary-foreground' : 'text-primary hover:text-primary-foreground hover:bg-primary'"
+                  (click)="toggleLike()">
                   <span>👍</span>
-                  <span>Me gusta</span>
+                  <span>{{ isLiked() ? 'Me gusta' : 'Me gusta' }}</span>
                 </button>
               </div>
             </div>
@@ -131,7 +137,7 @@
                 <div class="flex flex-wrap gap-2">
                   @for (categoria of isla()?.categorias; track $index){
                     <span class="glass-card px-3 py-1 text-sm font-medium text-primary">
-                    {{categoria}}
+                    {{categoria.nombre}}
                 </span>
                   }
                 </div>
@@ -149,6 +155,51 @@
               </div>
             </div>
 
+            <!-- Rating Section -->
+            <div class="glass-card p-6">
+              <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Puntuación</h3>
+              <div class="space-y-4">
+                <!-- User Rating -->
+                <div>
+                  <div class="text-sm text-muted-foreground mb-2">Tu puntuación</div>
+                  <div class="flex space-x-1">
+                    @for (i of [1,2,3,4,5]; track i) {
+                      <button
+                        (click)="establecerPuntuacion(i)"
+                        class="text-2xl hover:scale-110 transition-transform focus:outline-none"
+                        [attr.aria-label]="'Puntuar con ' + i + ' estrella' + (i > 1 ? 's' : '')">
+                        @if (puntuacionUsuario() !== null && i <= puntuacionUsuario()! ) {
+                          ⭐
+                        } @else {
+                          ☆
+                        }
+                      </button>
+                    }
+                  </div>
+                  <div class="text-xs text-muted-foreground mt-1">
+                    @if (puntuacionUsuario()) {
+                      Has puntuado con {{ puntuacionUsuario()! }} estrella{{ puntuacionUsuario()! > 1 ? 's' : '' }}
+                    } @else {
+                      Haz clic en las estrellas para puntuar
+                    }
+                  </div>
+                </div>
+
+                <!-- Average Rating -->
+                <div>
+                  <div class="text-sm text-muted-foreground mb-2">Promedio de usuarios</div>
+                  <div class="flex items-center space-x-2">
+                    <div class="flex space-x-1">
+                      @for (i of [1,2,3,4,5]; track i) {
+                        <span class="text-xl" [class]="promedioPuntuaciones() >= i ? 'text-yellow-400' : 'text-gray-400'">⭐</span>
+                      }
+                    </div>
+                    <span class="text-sm font-futuristic font-medium text-primary">{{ promedioPuntuaciones().toFixed(1) }}/5.0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <!-- Statistics -->
             <div class="glass-card p-6">
               <h3 class="text-lg font-futuristic font-semibold text-primary mb-4">Estadísticas</h3>
@@ -158,16 +209,16 @@
                   <div class="text-sm text-muted-foreground">Visitas Totales</div>
                 </div>
                 <div class="text-center">
-                  <div class="text-2xl font-futuristic font-bold text-primary">000/5.0</div>
-                  <div class="text-sm text-muted-foreground">Rating Promedio</div>
-                </div>
-                <div class="text-center">
                   <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.meGustaTipos?.length || 0 }}</div>
                   <div class="text-sm text-muted-foreground">Me gusta</div>
                 </div>
                 <div class="text-center">
                   <div class="text-2xl font-futuristic font-bold text-primary">{{ isla()?.favoritoIds?.length || 0 }}</div>
                   <div class="text-sm text-muted-foreground">En Favoritos</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-futuristic font-bold text-primary">{{ promedioPuntuaciones().toFixed(1) }}/5.0</div>
+                  <div class="text-sm text-muted-foreground">Rating Promedio</div>
                 </div>
               </div>
             </div>
@@ -205,10 +256,18 @@
               <!-- User Avatar Placeholder -->
             </div>
             <div class="flex-grow">
-              <textarea class="w-full bg-transparent border-2 border-primary/20 rounded-lg p-3 focus:outline-none focus:border-primary transition-colors" rows="3" placeholder="Escribe tu comentario aquí..."></textarea>
+              <textarea
+                class="w-full bg-transparent border-2 border-primary/20 rounded-lg p-3 focus:outline-none focus:border-primary transition-colors"
+                rows="3"
+                placeholder="Escribe tu comentario aquí..."
+                [(ngModel)]="nuevoComentario"
+                [disabled]="isSubmittingComentario()"></textarea>
               <div class="flex justify-end mt-3">
-                <button class="metaverse-button py-2 px-6 text-sm">
-                  <span>Enviar</span>
+                <button
+                  class="metaverse-button py-2 px-6 text-sm"
+                  (click)="crearComentario()"
+                  [disabled]="isSubmittingComentario() || !nuevoComentario().trim()">
+                  <span>{{ isSubmittingComentario() ? 'Enviando...' : 'Enviar' }}</span>
                 </button>
               </div>
             </div>
@@ -216,97 +275,138 @@
         </div>
 
         <!-- Comments List -->
-        <div class="space-y-8">
-          <!-- Parent Comment -->
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex-shrink-0">
-              <!-- User Avatar -->
-            </div>
-            <div class="flex-grow">
-              <div class="glass-card p-4">
-                <div class="flex items-center justify-between mb-2">
-                  <div class="font-futuristic font-semibold text-primary">Nombre de Usuario</div>
-                  <div class="text-xs text-muted-foreground">Hace 2 horas</div>
+        @if (isLoadingComentarios()) {
+          <div class="flex justify-center py-8">
+            <app-loader></app-loader>
+          </div>
+        } @else if (comentarios().length === 0) {
+          <div class="glass-card p-8 text-center">
+            <div class="text-4xl mb-4">💬</div>
+            <h3 class="text-lg font-futuristic font-semibold text-primary mb-2">No hay comentarios aún</h3>
+            <p class="text-muted-foreground">Sé el primero en dejar un comentario sobre esta isla.</p>
+          </div>
+        } @else {
+          <div class="space-y-8">
+            @for (comentario of comentarios(); track comentario.id) {
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 flex-shrink-0">
+                  <!-- User Avatar -->
                 </div>
-                <p class="text-muted-foreground">
-                  Este es un comentario de ejemplo. ¡Qué gran isla! Me encanta el diseño y la atmósfera que han creado.
-                </p>
-              </div>
-              <div class="flex items-center space-x-4 mt-2 text-sm">
-                <button class="text-primary hover:underline">Responder</button>
-                <div class="flex items-center space-x-1 text-muted-foreground">
-                  <span>👍</span>
-                  <span>12</span>
-                </div>
-              </div>
-
-              <!-- Child Comment (Reply) -->
-              <div class="mt-6 pl-8 border-l-2 border-primary/20">
-                <div class="flex items-start space-x-4">
-                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex-shrink-0">
-                    <!-- User Avatar -->
-                  </div>
-                  <div class="flex-grow">
-                    <div class="glass-card p-4">
-                      <div class="flex items-center justify-between mb-2">
-                        <div class="font-futuristic font-semibold text-primary">Otro Usuario</div>
-                        <div class="text-xs text-muted-foreground">Hace 1 hora</div>
-                      </div>
-                      <p class="text-muted-foreground">
-                        ¡Totalmente de acuerdo! La mejor isla que he visitado hasta ahora.
-                      </p>
+                <div class="flex-grow">
+                  <div class="glass-card p-4">
+                    <div class="flex items-center justify-between mb-2">
+                      <div class="font-futuristic font-semibold text-primary">{{ comentario.usuarioNombre }}</div>
+                      <div class="text-xs text-muted-foreground">{{ comentario.fechaCreacion | date:'dd/MM/yyyy HH:mm' }}</div>
                     </div>
-                     <div class="flex items-center space-x-4 mt-2 text-sm">
-                        <div class="flex items-center space-x-1 text-muted-foreground">
-                          <span>👍</span>
-                          <span>5</span>
+                    <p class="text-muted-foreground">
+                      {{ comentario.contenido }}
+                    </p>
+                  </div>
+                  <div class="flex items-center space-x-4 mt-2 text-sm">
+                    <button
+                      class="text-primary hover:underline"
+                      (click)="mostrarFormularioRespuesta(comentario.id)">
+                      Responder
+                    </button>
+                    <div class="flex items-center space-x-2">
+                      <button
+                        class="flex items-center space-x-1 transition-colors"
+                        [class]="comentario.userLikeType === TipoLike.ME_GUSTA ? 'text-green-400' : 'text-muted-foreground hover:text-green-400'"
+                        (click)="toggleLikeComentario(comentario.id, TipoLike.ME_GUSTA)">
+                        <span>👍</span>
+                        <span>{{ comentario.likesCount }}</span>
+                      </button>
+                      <button
+                        class="flex items-center space-x-1 transition-colors"
+                        [class]="comentario.userLikeType === TipoLike.NO_ME_GUSTA ? 'text-red-400' : 'text-muted-foreground hover:text-red-400'"
+                        (click)="toggleLikeComentario(comentario.id, TipoLike.NO_ME_GUSTA)">
+                        <span>👎</span>
+                        <span>{{ comentario.dislikesCount }}</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Formulario de respuesta -->
+                  @if (comentarioRespondiendoId() === comentario.id) {
+                    <div class="mt-4 pl-8 border-l-2 border-primary/20">
+                      <div class="glass-card p-4">
+                        <div class="flex items-start space-x-4">
+                          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex-shrink-0">
+                            <!-- User Avatar Placeholder -->
+                          </div>
+                          <div class="flex-grow">
+                            <textarea
+                              class="w-full bg-transparent border-2 border-primary/20 rounded-lg p-3 focus:outline-none focus:border-primary transition-colors text-sm"
+                              rows="2"
+                              placeholder="Escribe tu respuesta..."
+                              [(ngModel)]="nuevaRespuesta"
+                              [disabled]="isSubmittingRespuesta()"></textarea>
+                            <div class="flex justify-end space-x-2 mt-2">
+                              <button
+                                class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                (click)="ocultarFormularioRespuesta()"
+                                [disabled]="isSubmittingRespuesta()">
+                                Cancelar
+                              </button>
+                              <button
+                                class="metaverse-button py-1 px-4 text-sm"
+                                (click)="crearRespuesta()"
+                                [disabled]="isSubmittingRespuesta() || !nuevaRespuesta().trim()">
+                                <span>{{ isSubmittingRespuesta() ? 'Enviando...' : 'Responder' }}</span>
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                  </div>
-                </div>
-              </div>
-               <!-- Reply Form (Hidden by default) -->
-              <div class="mt-4 pl-8 hidden">
-                  <div class="flex items-start space-x-4">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-light flex-shrink-0">
                     </div>
-                    <div class="flex-grow">
-                      <textarea class="w-full bg-transparent border-2 border-primary/20 rounded-lg p-3 focus:outline-none focus:border-primary transition-colors" rows="2" placeholder="Escribe tu respuesta..."></textarea>
-                      <div class="flex justify-end mt-2 space-x-2">
-                         <button class="glass-card px-4 py-1 text-primary hover:bg-primary/10 text-sm">Cancelar</button>
-                        <button class="metaverse-button py-1 px-4 text-sm">Responder</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
+                  }
 
-           <!-- Parent Comment 2 -->
-          <div class="flex items-start space-x-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 flex-shrink-0">
-              <!-- User Avatar -->
-            </div>
-            <div class="flex-grow">
-              <div class="glass-card p-4">
-                <div class="flex items-center justify-between mb-2">
-                  <div class="font-futuristic font-semibold text-primary">Jugador_XYZ</div>
-                  <div class="text-xs text-muted-foreground">Hace 5 horas</div>
+                  <!-- Respuestas (si las hay) -->
+                  @if (comentario.respuestas && comentario.respuestas.length > 0) {
+                    @for (respuesta of comentario.respuestas; track respuesta.id) {
+                      <div class="mt-6 pl-8 border-l-2 border-primary/20">
+                        <div class="flex items-start space-x-4">
+                          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex-shrink-0">
+                            <!-- User Avatar -->
+                          </div>
+                          <div class="flex-grow">
+                            <div class="glass-card p-4">
+                              <div class="flex items-center justify-between mb-2">
+                                <div class="font-futuristic font-semibold text-primary">{{ respuesta.usuarioNombre }}</div>
+                                <div class="text-xs text-muted-foreground">{{ respuesta.fechaCreacion | date:'dd/MM/yyyy HH:mm' }}</div>
+                              </div>
+                              <p class="text-muted-foreground">
+                                {{ respuesta.contenido }}
+                              </p>
+                            </div>
+                            <div class="flex items-center space-x-4 mt-2 text-sm">
+                              <div class="flex items-center space-x-2">
+                                <button
+                                  class="flex items-center space-x-1 transition-colors"
+                                  [class]="respuesta.userLikeType === TipoLike.ME_GUSTA ? 'text-green-400' : 'text-muted-foreground hover:text-green-400'"
+                                  (click)="toggleLikeComentario(respuesta.id, TipoLike.ME_GUSTA)">
+                                  <span>👍</span>
+                                  <span>{{ respuesta.likesCount }}</span>
+                                </button>
+                                <button
+                                  class="flex items-center space-x-1 transition-colors"
+                                  [class]="respuesta.userLikeType === TipoLike.NO_ME_GUSTA ? 'text-red-400' : 'text-muted-foreground hover:text-red-400'"
+                                  (click)="toggleLikeComentario(respuesta.id, TipoLike.NO_ME_GUSTA)">
+                                  <span>👎</span>
+                                  <span>{{ respuesta.dislikesCount }}</span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    }
+                  }
                 </div>
-                <p class="text-muted-foreground">
-                  ¿Alguien sabe dónde encontrar el tesoro escondido? Llevo horas buscando.
-                </p>
               </div>
-              <div class="flex items-center space-x-4 mt-2 text-sm">
-                <button class="text-primary hover:underline">Responder</button>
-                 <div class="flex items-center space-x-1 text-muted-foreground">
-                  <span>👍</span>
-                  <span>3</span>
-                </div>
-              </div>
-            </div>
+            }
           </div>
-        </div>
+        }
       </div>
     }
   </div>
