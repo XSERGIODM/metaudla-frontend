@@ -4,14 +4,14 @@
     <app-header-seccion-isla-page></app-header-seccion-isla-page>
 
     <!-- Advanced Filters Bar -->
-    <app-filter-seccion-isla-page></app-filter-seccion-isla-page>
+    <app-filter-seccion-isla-page (filtersChanged)="onFiltersChanged($event)"></app-filter-seccion-isla-page>
 
     <!-- Islands Grid -->
     @if (isLoading()) {
       <app-loader></app-loader>
     } @else {
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        @for (isla of lista(); track isla.id) {
+        @for (isla of filteredIslas(); track isla.id) {
           <app-grid-isla [isla]="isla"></app-grid-isla>
         }
       </div>
